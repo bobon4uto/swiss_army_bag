@@ -13,37 +13,32 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_2eef7")
 blend_point_1/pos = 1.0
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wy011"]
-animation = &"swingl"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6otr0"]
+animation = &"shoot"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dhlvq"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qq0ir"]
 animation = &"swingr"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gp5a1"]
-animation = &"swingd"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dx6hc"]
-animation = &"swingu"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_dhlvq"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_wy011")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_dhlvq")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_gp5a1")
-blend_point_2/pos = Vector2(0, 1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_dx6hc")
-blend_point_3/pos = Vector2(0, -1)
-blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iccqj"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5754w"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6otr0"]
 advance_mode = 2
-advance_expression = "attacking"
+advance_expression = "attacking "
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wcnl7"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_umovh"]
+advance_mode = 2
+advance_expression = "!attacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s6y4d"]
+advance_mode = 2
+advance_expression = "shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pmb7k"]
+advance_mode = 2
+advance_expression = "!shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qq0ir"]
 advance_mode = 2
 advance_expression = "!attacking"
 
@@ -51,6 +46,8 @@ advance_expression = "!attacking"
 states/Start/position = Vector2(193, 87)
 states/idlespace/node = SubResource("AnimationNodeBlendSpace1D_84k2g")
 states/idlespace/position = Vector2(310, 32)
-states/swingspace/node = SubResource("AnimationNodeBlendSpace2D_dhlvq")
-states/swingspace/position = Vector2(472, 187)
-transitions = ["Start", "idlespace", SubResource("AnimationNodeStateMachineTransition_iccqj"), "idlespace", "swingspace", SubResource("AnimationNodeStateMachineTransition_5754w"), "swingspace", "idlespace", SubResource("AnimationNodeStateMachineTransition_wcnl7")]
+states/shoot/node = SubResource("AnimationNodeAnimation_6otr0")
+states/shoot/position = Vector2(550, 189)
+states/swingr/node = SubResource("AnimationNodeAnimation_qq0ir")
+states/swingr/position = Vector2(567, 70)
+transitions = ["Start", "idlespace", SubResource("AnimationNodeStateMachineTransition_iccqj"), "idlespace", "swingr", SubResource("AnimationNodeStateMachineTransition_6otr0"), "swingr", "idlespace", SubResource("AnimationNodeStateMachineTransition_umovh"), "swingr", "shoot", SubResource("AnimationNodeStateMachineTransition_s6y4d"), "shoot", "swingr", SubResource("AnimationNodeStateMachineTransition_pmb7k"), "shoot", "idlespace", SubResource("AnimationNodeStateMachineTransition_qq0ir")]

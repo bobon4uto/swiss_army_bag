@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgapcgm8jf2gu"]
+
+[ext_resource type="Script" uid="uid://c07d53gimqwbc" path="res://classes/zondbie.gd" id="1_2141s"]
+[ext_resource type="Texture2D" uid="uid://c068tgmd843c1" path="res://icon.svg" id="2_u7ry8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7ry8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u7ry8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_88cr1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_88cr1"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yih0o"]
+radius = 100.0
+
+[node name="zondbie" type="RigidBody2D"]
+script = ExtResource("1_2141s")
+
+[node name="body" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u7ry8")
+
+[node name="head" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u7ry8")
+
+[node name="weapoff" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u7ry8")
+
+[node name="hat" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_88cr1")
+
+[node name="hurtbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_88cr1")
+
+[node name="hitbox" type="Area2D" parent="hurtbox"]
+
+[node name="ayo" type="CollisionShape2D" parent="hurtbox/hitbox"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_yih0o")
+
+[node name="health" type="ProgressBar" parent="."]
+offset_left = -50.0
+offset_top = 80.0
+offset_right = 50.0
+offset_bottom = 107.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="hurtbox/hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hurtbox/hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

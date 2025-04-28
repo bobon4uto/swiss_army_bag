@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dw46v0cfvd7y8"]
+[gd_scene load_steps=25 format=3 uid="uid://dw46v0cfvd7y8"]
 
 [ext_resource type="Script" uid="uid://wiklv8lfx07u" path="res://classes/zickuza.gd" id="1_kdb3x"]
-[ext_resource type="Texture2D" uid="uid://bvsl5g7k1budc" path="res://assets/Zickuza/duck_trigger.png" id="2_fnict"]
+[ext_resource type="Texture2D" uid="uid://b5vh4sn3ikl7" path="res://assets/Zickuza/PULLMYDUCKTRIGGERL.png" id="2_x40g7"]
+[ext_resource type="Texture2D" uid="uid://bywunckcnknxp" path="res://assets/Zickuza/PULLMYDUCKTRIGGERR.png" id="3_wy011"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://b23kbhf8s7uao" path="res://classes/animtree.tres" id="3_ypdeb"]
 [ext_resource type="PackedScene" uid="uid://bel6lmf6hcvmu" path="res://classes/weapon.tscn" id="4_ypdeb"]
+[ext_resource type="Texture2D" uid="uid://c068tgmd843c1" path="res://icon.svg" id="5_7wis1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fnict"]
 radius = 80.0
@@ -13,10 +15,18 @@ height = 160.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_fnict")
+"texture": ExtResource("2_x40g7")
 }],
 "loop": true,
-"name": &"duck",
+"name": &"duckL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wy011")
+}],
+"loop": true,
+"name": &"duckR",
 "speed": 5.0
 }]
 
@@ -25,7 +35,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("centre:position")
+tracks/0/path = NodePath("actual_center/centre:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -37,7 +47,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("centre:rotation")
+tracks/1/path = NodePath("actual_center/centre:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -49,7 +59,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("centre/hand:rotation")
+tracks/2/path = NodePath("actual_center/centre/hand:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -61,7 +71,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("centre/hand:position")
+tracks/3/path = NodePath("actual_center/centre/hand:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -69,6 +79,171 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(28, -4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("actual_center/centre/hand/bullet:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("actual_center/centre/hand/bullet:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BodySprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gp5a1"]
+resource_name = "idlel"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("actual_center/centre/hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-27, -16), Vector2(-27, 8), Vector2(-27, -16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("actual_center/centre/hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.27246, 2.10943, 2.27246]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodySprite:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.50329, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0.506292), Vector2(0, 2.50629), Vector2(0, 0.506292)]
+}
+
+[sub_resource type="Animation" id="Animation_dhlvq"]
+resource_name = "idler"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("actual_center/centre/hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(28, -4), Vector2(22, 5), Vector2(28, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("actual_center/centre/hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [4.11718, 4.17886, 4.11718]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodySprite:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.499215, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dx6hc"]
+resource_name = "shoot"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("actual_center/centre/hand/bullet:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.21),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2000), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("actual_center/centre/hand/bullet:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"set_bvist"
+}, {
+"args": [],
+"method": &"set_bvisf"
+}, {
+"args": [],
+"method": &"_on_shoot_end"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_d4lev"]
@@ -78,7 +253,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("centre/hand:position")
+tracks/0/path = NodePath("actual_center/centre/hand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -90,7 +265,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("centre:position")
+tracks/1/path = NodePath("actual_center/centre:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -102,7 +277,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("centre:rotation")
+tracks/2/path = NodePath("actual_center/centre:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -119,7 +294,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("centre/hand:position")
+tracks/0/path = NodePath("actual_center/centre/hand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -131,7 +306,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("centre:position")
+tracks/1/path = NodePath("actual_center/centre:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -143,7 +318,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("centre:rotation")
+tracks/2/path = NodePath("actual_center/centre:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -160,7 +335,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("centre/hand:position")
+tracks/0/path = NodePath("actual_center/centre/hand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -172,7 +347,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("centre:position")
+tracks/1/path = NodePath("actual_center/centre:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -184,7 +359,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("centre:rotation")
+tracks/2/path = NodePath("actual_center/centre:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -201,7 +376,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("centre/hand:position")
+tracks/0/path = NodePath("actual_center/centre/hand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -213,7 +388,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("centre:position")
+tracks/1/path = NodePath("actual_center/centre:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -225,7 +400,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("centre:rotation")
+tracks/2/path = NodePath("actual_center/centre:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -233,6 +408,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-1.5708, 1.5708]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodySprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.140595),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2)]
 }
 
 [sub_resource type="Animation" id="Animation_x40g7"]
@@ -242,7 +429,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("centre/hand:position")
+tracks/0/path = NodePath("actual_center/centre/hand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -254,7 +441,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("centre:position")
+tracks/1/path = NodePath("actual_center/centre:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -266,7 +453,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("centre:rotation")
+tracks/2/path = NodePath("actual_center/centre:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -276,67 +463,12 @@ tracks/2/keys = {
 "values": [-3.14159, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_dhlvq"]
-resource_name = "idler"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("centre/hand:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(28, -4), Vector2(22, 5), Vector2(28, -4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("centre/hand:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [4.11718, 4.17886, 4.11718]
-}
-
-[sub_resource type="Animation" id="Animation_gp5a1"]
-resource_name = "idlel"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("centre/hand:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-27, -16), Vector2(-27, 8), Vector2(-27, -16)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("centre/hand:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [2.27246, 2.10943, 2.27246]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7wis1"]
 _data = {
 &"RESET": SubResource("Animation_ypdeb"),
 &"idlel": SubResource("Animation_gp5a1"),
 &"idler": SubResource("Animation_dhlvq"),
+&"shoot": SubResource("Animation_dx6hc"),
 &"swing": SubResource("Animation_d4lev"),
 &"swingd": SubResource("Animation_wy011"),
 &"swingl": SubResource("Animation_7wis1"),
@@ -344,25 +476,62 @@ _data = {
 &"swingu": SubResource("Animation_x40g7")
 }
 
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_ypdeb"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7wis1"]
+
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7wis1"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x40g7"]
-graph_offset = Vector2(-506.091, 49.3331)
+graph_offset = Vector2(-787.347, 18.5193)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_ypdeb")
+nodes/Add2/position = Vector2(-200, 300)
 nodes/AnimationNodeStateMachine/node = ExtResource("3_ypdeb")
-nodes/AnimationNodeStateMachine/position = Vector2(-340, 120)
+nodes/AnimationNodeStateMachine/position = Vector2(-560, 120)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_7wis1")
+nodes/StateMachine/position = Vector2(-560, 380)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_7wis1")
-nodes/TimeScale/position = Vector2(20, 60)
-node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0, &"TimeScale"]
+nodes/TimeScale/position = Vector2(0, 120)
+nodes/output/position = Vector2(280, 120)
+node_connections = [&"Add2", 0, &"AnimationNodeStateMachine", &"Add2", 1, &"StateMachine", &"TimeScale", 0, &"Add2", &"output", 0, &"TimeScale"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x40g7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7wis1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy011"]
 
 [node name="Zickuza" type="CharacterBody2D"]
 script = ExtResource("1_kdb3x")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="health" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = 85.0
+offset_right = 80.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HurtBox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fnict")
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d4lev")
-animation = &"duck"
+animation = &"duckR"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -373,14 +542,33 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_x40g7")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Add2/add_amount = 0
 parameters/AnimationNodeStateMachine/idlespace/blend_position = 0
-parameters/AnimationNodeStateMachine/swingspace/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
 
-[node name="centre" type="Node2D" parent="."]
+[node name="actual_center" type="Node2D" parent="."]
 
-[node name="hand" type="Node2D" parent="centre"]
+[node name="centre" type="Node2D" parent="actual_center"]
+
+[node name="hand" type="Node2D" parent="actual_center/centre"]
+unique_name_in_owner = true
 position = Vector2(28, -4)
 rotation = 1.5708
 
-[node name="weapon" parent="centre/hand" instance=ExtResource("4_ypdeb")]
+[node name="weapon" parent="actual_center/centre/hand" instance=ExtResource("4_ypdeb")]
+unique_name_in_owner = true
+position = Vector2(-0.85953, -0.511087)
+
+[node name="bullet" type="Area2D" parent="actual_center/centre/hand"]
+unique_name_in_owner = true
+visible = false
+
+[node name="look" type="AnimatedSprite2D" parent="actual_center/centre/hand/bullet"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_x40g7")
+
+[node name="shape" type="CollisionShape2D" parent="actual_center/centre/hand/bullet"]
+shape = SubResource("RectangleShape2D_wy011")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="actual_center/centre/hand/bullet" to="." method="_on_bullet_body_entered"]

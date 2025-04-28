@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxgy67qobtvlp"]
+[gd_scene load_steps=6 format=3 uid="uid://cxgy67qobtvlp"]
 
 [ext_resource type="Script" uid="uid://d00yfv0bvuj4r" path="res://scenes/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dw46v0cfvd7y8" path="res://classes/zickuza.tscn" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://c068tgmd843c1" path="res://icon.svg" id="2_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://bgapcgm8jf2gu" path="res://classes/zondbie.tscn" id="4_k0juu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0juu"]
 size = Vector2(128, 128)
@@ -10,15 +11,101 @@ size = Vector2(128, 128)
 [node name="World" type="Node2D"]
 script = ExtResource("1_k0juu")
 
+[node name="grass" type="Polygon2D" parent="."]
+z_index = -10
+color = Color(0.4635, 0.6, 0.054, 1)
+polygon = PackedVector2Array(-14980, 7245, 128, 7444, -5, -5544, -15378, -5213)
+
+[node name="grass2" type="Polygon2D" parent="."]
+z_index = -10
+position = Vector2(15108, 66)
+color = Color(0.363075, 0.47, 0.0423, 1)
+polygon = PackedVector2Array(-14980, 7245, 128, 7444, -5, -5544, -15378, -5213)
+
 [node name="Zickuza" parent="." instance=ExtResource("1_rwgxs")]
 position = Vector2(30, 123)
 
+[node name="cam" type="Camera2D" parent="Zickuza"]
+unique_name_in_owner = true
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(0, 496)
-scale = Vector2(7.53637, 1.5517)
+position = Vector2(-40, 865)
+scale = Vector2(52.797, -1.87948)
 texture = ExtResource("2_4wyf3")
 
 [node name="bottom" type="StaticBody2D" parent="Icon"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="shape" type="CollisionShape2D" parent="Icon/bottom"]
 shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(-109, -550)
+scale = Vector2(52.797, -1.87948)
+texture = ExtResource("2_4wyf3")
+
+[node name="bottom" type="StaticBody2D" parent="Icon2"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="Icon2/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(-3655, 140)
+scale = Vector2(3.85109, -29.3367)
+texture = ExtResource("2_4wyf3")
+
+[node name="bottom" type="StaticBody2D" parent="Icon3"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="Icon3/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(3476, 219)
+scale = Vector2(3.85109, -29.3367)
+texture = ExtResource("2_4wyf3")
+
+[node name="bottom" type="StaticBody2D" parent="Icon4"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="Icon4/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="zondbie" parent="enemies" node_paths=PackedStringArray("zickuza") instance=ExtResource("4_k0juu")]
+position = Vector2(-1660, -14)
+zickuza = NodePath("../../Zickuza")
+
+[node name="zondbie2" parent="enemies" node_paths=PackedStringArray("zickuza") instance=ExtResource("4_k0juu")]
+position = Vector2(-1695, 297)
+zickuza = NodePath("../../Zickuza")
+
+[node name="zondbie3" parent="enemies" node_paths=PackedStringArray("zickuza") instance=ExtResource("4_k0juu")]
+position = Vector2(-1026, 324)
+zickuza = NodePath("../../Zickuza")
+
+[node name="zondbie4" parent="enemies" node_paths=PackedStringArray("zickuza") instance=ExtResource("4_k0juu")]
+position = Vector2(-1383, 301)
+zickuza = NodePath("../../Zickuza")
+
+[node name="zondbie5" parent="enemies" node_paths=PackedStringArray("zickuza") instance=ExtResource("4_k0juu")]
+position = Vector2(-1975, 343)
+zickuza = NodePath("../../Zickuza")
+
+[node name="zondbie6" parent="enemies" node_paths=PackedStringArray("zickuza") instance=ExtResource("4_k0juu")]
+position = Vector2(-2070, 47)
+zickuza = NodePath("../../Zickuza")
+
+[node name="zondbie7" parent="enemies" node_paths=PackedStringArray("zickuza") instance=ExtResource("4_k0juu")]
+position = Vector2(-1394, 9)
+zickuza = NodePath("../../Zickuza")
