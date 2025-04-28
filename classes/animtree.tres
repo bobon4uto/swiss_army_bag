@@ -1,0 +1,56 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=12 format=3 uid="uid://b23kbhf8s7uao"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0a1w3"]
+animation = &"idlel"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2eef7"]
+animation = &"idler"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_84k2g"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_0a1w3")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_2eef7")
+blend_point_1/pos = 1.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wy011"]
+animation = &"swingl"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dhlvq"]
+animation = &"swingr"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gp5a1"]
+animation = &"swingd"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dx6hc"]
+animation = &"swingu"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_dhlvq"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_wy011")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_dhlvq")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_gp5a1")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_dx6hc")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iccqj"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5754w"]
+advance_mode = 2
+advance_expression = "attacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wcnl7"]
+advance_mode = 2
+advance_expression = "!attacking"
+
+[resource]
+states/Start/position = Vector2(193, 87)
+states/idlespace/node = SubResource("AnimationNodeBlendSpace1D_84k2g")
+states/idlespace/position = Vector2(310, 32)
+states/swingspace/node = SubResource("AnimationNodeBlendSpace2D_dhlvq")
+states/swingspace/position = Vector2(472, 187)
+transitions = ["Start", "idlespace", SubResource("AnimationNodeStateMachineTransition_iccqj"), "idlespace", "swingspace", SubResource("AnimationNodeStateMachineTransition_5754w"), "swingspace", "idlespace", SubResource("AnimationNodeStateMachineTransition_wcnl7")]

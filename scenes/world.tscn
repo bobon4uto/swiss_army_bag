@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxgy67qobtvlp"]
+
+[ext_resource type="Script" uid="uid://d00yfv0bvuj4r" path="res://scenes/world.gd" id="1_k0juu"]
+[ext_resource type="PackedScene" uid="uid://dw46v0cfvd7y8" path="res://classes/zickuza.tscn" id="1_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://c068tgmd843c1" path="res://icon.svg" id="2_4wyf3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0juu"]
+size = Vector2(128, 128)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_k0juu")
+
+[node name="Zickuza" parent="." instance=ExtResource("1_rwgxs")]
+position = Vector2(30, 123)
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, 496)
+scale = Vector2(7.53637, 1.5517)
+texture = ExtResource("2_4wyf3")
+
+[node name="bottom" type="StaticBody2D" parent="Icon"]
+
+[node name="shape" type="CollisionShape2D" parent="Icon/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
