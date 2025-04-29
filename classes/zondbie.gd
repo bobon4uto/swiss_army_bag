@@ -7,7 +7,7 @@ class_name enemy
 @export var damage = 10
 var effective :Array= []
 var ineffective :Array= []
-
+var start_pos = Vector2.ZERO
 @export var stage : int = 2
 
 @onready var body_sprite = $body
@@ -26,6 +26,7 @@ func _ready():
 	timer.paused = true
 	#collision_layer=0
 	collision_mask=2
+	start_pos=position
 
 func generate():
 	#max_health = randf_range(100*stage,100*stage*1.5)
@@ -36,11 +37,22 @@ func generate():
 	
 	# TODO : make different eff ineff show up
 	weapon.dam_type.SLASH
-	effective.push_back(randi()%(weapon.dam_type.MENT+1))
-	effective.push_back(randi()%(weapon.dam_type.MENT+1))
-	ineffective.push_back(randi()%(weapon.dam_type.MENT+1))
-	ineffective.push_back(randi()%(weapon.dam_type.MENT+1))
-	print(str(effective[0]))
+	
+	var rand = randi()%(weapon.dam_type.MENT+1)
+	effective.push_back(rand)
+	body_sprite.play(str(rand))
+	
+	rand = randi()%(weapon.dam_type.MENT+1)
+	effective.push_back(rand)
+	head_sprite.play(str(rand))
+	
+	rand = randi()%(weapon.dam_type.MENT+1)
+	ineffective.push_back(rand)
+	hat_sprite.play(str(rand))
+	
+	rand = randi()%(weapon.dam_type.MENT+1)
+	ineffective.push_back(rand)
+	weap_sprite.play(str(rand))
 	
 
 

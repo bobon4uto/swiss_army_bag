@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxgy67qobtvlp"]
+[gd_scene load_steps=7 format=3 uid="uid://cxgy67qobtvlp"]
 
 [ext_resource type="Script" uid="uid://d00yfv0bvuj4r" path="res://scenes/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dw46v0cfvd7y8" path="res://classes/zickuza.tscn" id="1_rwgxs"]
@@ -7,6 +7,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0juu"]
 size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71j4m"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_k0juu")
@@ -22,63 +24,92 @@ position = Vector2(15108, 66)
 color = Color(0.363075, 0.47, 0.0423, 1)
 polygon = PackedVector2Array(-14980, 7245, 128, 7444, -5, -5544, -15378, -5213)
 
+[node name="obstcles" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="obstcles"]
+position = Vector2(-89, 1052)
+scale = Vector2(900, -1.879)
+texture = ExtResource("2_4wyf3")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/Icon"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/Icon/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="Icon2" type="Sprite2D" parent="obstcles"]
+position = Vector2(-85, -1063)
+scale = Vector2(900, -1.879)
+texture = ExtResource("2_4wyf3")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/Icon2"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/Icon2/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="Icon3" type="Sprite2D" parent="obstcles"]
+position = Vector2(-57799, 12)
+scale = Vector2(3.85109, -29.3367)
+texture = ExtResource("2_4wyf3")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/Icon3"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/Icon3/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="enemywall" type="Sprite2D" parent="obstcles"]
+position = Vector2(812.012, -68)
+scale = Vector2(3.85109, -29.3367)
+texture = ExtResource("2_4wyf3")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/enemywall"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/enemywall/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="enemywall2" type="Sprite2D" parent="obstcles"]
+position = Vector2(-1077, -11)
+scale = Vector2(3.85109, -29.3367)
+texture = ExtResource("2_4wyf3")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/enemywall2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/enemywall2/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="Icon4" type="Sprite2D" parent="obstcles"]
+position = Vector2(57108, -37)
+scale = Vector2(3.85109, -29.3367)
+texture = ExtResource("2_4wyf3")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/Icon4"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/Icon4/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
 [node name="Zickuza" parent="." instance=ExtResource("1_rwgxs")]
 position = Vector2(30, 123)
 
 [node name="cam" type="Camera2D" parent="Zickuza"]
 unique_name_in_owner = true
 zoom = Vector2(0.5, 0.5)
+limit_top = -1000
+limit_bottom = 1000
+limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-40, 865)
-scale = Vector2(52.797, -1.87948)
-texture = ExtResource("2_4wyf3")
-
-[node name="bottom" type="StaticBody2D" parent="Icon"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="Icon/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(-109, -550)
-scale = Vector2(52.797, -1.87948)
-texture = ExtResource("2_4wyf3")
-
-[node name="bottom" type="StaticBody2D" parent="Icon2"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="Icon2/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
-[node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(-3655, 140)
-scale = Vector2(3.85109, -29.3367)
-texture = ExtResource("2_4wyf3")
-
-[node name="bottom" type="StaticBody2D" parent="Icon3"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="Icon3/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
-[node name="Icon4" type="Sprite2D" parent="."]
-position = Vector2(3476, 219)
-scale = Vector2(3.85109, -29.3367)
-texture = ExtResource("2_4wyf3")
-
-[node name="bottom" type="StaticBody2D" parent="Icon4"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="Icon4/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
 
 [node name="enemies" type="Node2D" parent="."]
 
@@ -91,11 +122,11 @@ position = Vector2(-1695, 297)
 zickuza = NodePath("../../Zickuza")
 
 [node name="zondbie3" parent="enemies" node_paths=PackedStringArray("zickuza") instance=ExtResource("4_k0juu")]
-position = Vector2(-1026, 324)
+position = Vector2(-2670, -262)
 zickuza = NodePath("../../Zickuza")
 
 [node name="zondbie4" parent="enemies" node_paths=PackedStringArray("zickuza") instance=ExtResource("4_k0juu")]
-position = Vector2(-1383, 301)
+position = Vector2(-3386, -236)
 zickuza = NodePath("../../Zickuza")
 
 [node name="zondbie5" parent="enemies" node_paths=PackedStringArray("zickuza") instance=ExtResource("4_k0juu")]
@@ -107,5 +138,17 @@ position = Vector2(-2070, 47)
 zickuza = NodePath("../../Zickuza")
 
 [node name="zondbie7" parent="enemies" node_paths=PackedStringArray("zickuza") instance=ExtResource("4_k0juu")]
-position = Vector2(-1394, 9)
+position = Vector2(-3177, 278)
 zickuza = NodePath("../../Zickuza")
+
+[node name="triggers" type="Node2D" parent="."]
+
+[node name="spawn_enemies" type="Area2D" parent="triggers"]
+position = Vector2(1672, -7)
+
+[node name="coll" type="CollisionShape2D" parent="triggers/spawn_enemies"]
+scale = Vector2(57.0514, 117.836)
+shape = SubResource("RectangleShape2D_71j4m")
+
+[connection signal="retry" from="Zickuza" to="." method="_on_zickuza_retry"]
+[connection signal="body_entered" from="triggers/spawn_enemies" to="." method="_on_spawn_enemies_body_entered"]

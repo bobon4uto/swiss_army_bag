@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name player
 
+signal retry
+
 const SPEED = 500
 @onready var anim : AnimationTree =$AnimationTree
 @onready var sprite : AnimatedSprite2D = $BodySprite
@@ -88,6 +90,7 @@ func handle_hit(damage):
 func restart():
 	position=checkpoint
 	health.value=MAX_HELTH
+	emit_signal("retry")
 
 func _on_bullet_body_entered(body: Node2D) -> void:
 	if !shot_landed: 

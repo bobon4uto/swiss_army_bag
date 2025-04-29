@@ -483,7 +483,6 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7wis1"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x40g7"]
-graph_offset = Vector2(-787.347, 18.5193)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_ypdeb")
 nodes/Add2/position = Vector2(-200, 300)
 nodes/AnimationNodeStateMachine/node = ExtResource("3_ypdeb")
