@@ -1,7 +1,8 @@
 extends RigidBody2D
 class_name enemy
 
-@export var zickuza : player
+
+@export var target : Vector2 = Vector2.ZERO
 @export var speed = 400
 @export var max_health = 100
 @export var damage = 10
@@ -9,21 +10,20 @@ var effective :Array= []
 var ineffective :Array= []
 var start_pos = Vector2.ZERO
 @export var stage : int = 2
-
 @onready var body_sprite = $body
 @onready var head_sprite = $head
 @onready var weap_sprite = $weapoff
 @onready var hat_sprite = $hat
-
+@onready var htbx = $hurtbox/hitbox
 @onready var health = $health
 @onready var timer = $Timer
+@onready var view = $hurtbox/wiew
 var dead = false
 
 
 func _ready():
 	generate()
-	timer.start(1.0)
-	timer.paused = true
+	
 	#collision_layer=0
 	collision_mask=2
 	start_pos=position
@@ -35,25 +35,28 @@ func generate():
 	speed= randf_range(200*stage,200*stage*1.5)
 	damage = randf_range(10*stage,10*stage*1.5)
 	
-	# TODO : make different eff ineff show up
-	weapon.dam_type.SLASH
 	
+	var rcolor = Color(randf(),randf(),randf())
 	var rand = randi()%(weapon.dam_type.MENT+1)
 	effective.push_back(rand)
 	body_sprite.play(str(rand))
+	body_sprite.modulate = rcolor
 	
 	rand = randi()%(weapon.dam_type.MENT+1)
 	effective.push_back(rand)
 	head_sprite.play(str(rand))
+	head_sprite.modulate = rcolor
+	
 	
 	rand = randi()%(weapon.dam_type.MENT+1)
 	ineffective.push_back(rand)
 	hat_sprite.play(str(rand))
-	
+	hat_sprite.modulate = rcolor
 	rand = randi()%(weapon.dam_type.MENT+1)
 	ineffective.push_back(rand)
 	weap_sprite.play(str(rand))
-	
+	weap_sprite.modulate = rcolor
+	timer.start(randf_range(0.5,2.0))
 
 
 func _process(delta: float) -> void:
@@ -63,12 +66,14 @@ func _process(delta: float) -> void:
 		collision_mask=0
 		return
 	#look_at(zickuza.position)
-	var velocity = ( zickuza.position -position).normalized() * speed*delta
+	var velocity = Vector2.ZERO
+	if target != Vector2.ZERO:
+		velocity = ( target -position).normalized() * speed*delta
 	move_and_collide(velocity)
 
 
 
-func handle_hit(damage, knockback, dam_types:Array):
+func handle_hit(damagen, knockback, dam_types:Array):
 	if dead:
 		return
 	var type_multi = 1.0
@@ -82,10 +87,10 @@ func handle_hit(damage, knockback, dam_types:Array):
 				type_multi/=2
 
 	
-	position += (-zickuza.position+position).normalized() * knockback
+	position += (-target+position).normalized() * knockback
 	
 	
-	health.value-=damage*type_multi
+	health.value-=damagen*type_multi
 	if health.value<1.0:
 		die()
 
@@ -104,22 +109,25 @@ func playdead():
 	weap_sprite.play("dead")
 	hat_sprite.play("dead")
 
-func _on_hitbox_body_exited(body: Node2D) -> void:
+func _on_hitbox_body_exited(_body: Node2D) -> void:
 	if dead:
 		return
-	timer.paused = true
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
+
+
+func _on_hitbox_body_entered(_body: Node2D) -> void:
 	if dead:
 		return
-	if body is player:
-		zickuza.handle_hit(damage)
-		timer.paused=false
-		
 
 
 func _on_timer_timeout() -> void:
 	if !dead:
-		zickuza.handle_hit(damage)
+		for pl in htbx.get_overlapping_bodies():
+			
+			if pl is player:
+				pl.handle_hit(damage)
+		for pl in view.get_overlapping_bodies():
+			if pl is player:
+				target = pl.position
 	else:
 		queue_free()

@@ -1,18 +1,36 @@
-[gd_scene load_steps=25 format=3 uid="uid://dw46v0cfvd7y8"]
+[gd_scene load_steps=27 format=3 uid="uid://dw46v0cfvd7y8"]
 
 [ext_resource type="Script" uid="uid://wiklv8lfx07u" path="res://classes/zickuza.gd" id="1_kdb3x"]
+[ext_resource type="Texture2D" uid="uid://d4gshv443ayrc" path="res://assets/Zickuza/zickuza-the_yellow_duckl.png" id="2_bbnjn"]
 [ext_resource type="Texture2D" uid="uid://b5vh4sn3ikl7" path="res://assets/Zickuza/PULLMYDUCKTRIGGERL.png" id="2_x40g7"]
+[ext_resource type="Texture2D" uid="uid://dv25oehjl6h0u" path="res://assets/Zickuza/zickuza-the_yellow_duckr.png" id="3_dhlvq"]
 [ext_resource type="Texture2D" uid="uid://bywunckcnknxp" path="res://assets/Zickuza/PULLMYDUCKTRIGGERR.png" id="3_wy011"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://b23kbhf8s7uao" path="res://classes/animtree.tres" id="3_ypdeb"]
 [ext_resource type="PackedScene" uid="uid://bel6lmf6hcvmu" path="res://classes/weapon.tscn" id="4_ypdeb"]
 [ext_resource type="Texture2D" uid="uid://c068tgmd843c1" path="res://icon.svg" id="5_7wis1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fnict"]
-radius = 80.0
-height = 160.0
+radius = 43.0
+height = 180.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d4lev"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bbnjn")
+}],
+"loop": true,
+"name": &"ZickuzaL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dhlvq")
+}],
+"loop": true,
+"name": &"ZickuzaR",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_x40g7")
@@ -519,18 +537,19 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -80.0
-offset_top = 85.0
+offset_top = 110.0
 offset_right = 80.0
-offset_bottom = 112.0
+offset_bottom = 137.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HurtBox" type="CollisionShape2D" parent="."]
+position = Vector2(1, 10)
 shape = SubResource("CapsuleShape2D_fnict")
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d4lev")
-animation = &"duckR"
+animation = &"ZickuzaR"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

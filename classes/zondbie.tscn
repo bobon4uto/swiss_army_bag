@@ -1,10 +1,103 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgapcgm8jf2gu"]
+[gd_scene load_steps=39 format=3 uid="uid://bgapcgm8jf2gu"]
 
 [ext_resource type="Script" uid="uid://c07d53gimqwbc" path="res://classes/zondbie.gd" id="1_2141s"]
+[ext_resource type="Texture2D" uid="uid://2gusak6rt5nr" path="res://assets/enemies/daedenemy.png" id="2_88cr1"]
+[ext_resource type="Texture2D" uid="uid://dopns2dk2tw0k" path="res://assets/enemies/0slash/bd.png" id="2_mo8gx"]
 [ext_resource type="Texture2D" uid="uid://c068tgmd843c1" path="res://icon.svg" id="2_u7ry8"]
+[ext_resource type="Texture2D" uid="uid://dycu0cgdiuc3p" path="res://assets/enemies/1blunt/bd.png" id="3_p8db7"]
+[ext_resource type="Texture2D" uid="uid://b278m61qrxqwf" path="res://assets/enemies/2pierce/bd.png" id="4_u4kxy"]
+[ext_resource type="Texture2D" uid="uid://b0cl67wlfnnme" path="res://assets/enemies/3light/bd.png" id="5_xgamy"]
+[ext_resource type="Texture2D" uid="uid://bqn5y5o1sekyd" path="res://assets/enemies/4heavy/bd.png" id="6_re6ey"]
+[ext_resource type="Texture2D" uid="uid://cbthoj0ys7igy" path="res://assets/enemies/5elem/bd.png" id="7_bqxxi"]
+[ext_resource type="Texture2D" uid="uid://bfcobdytkmqw4" path="res://assets/enemies/6ment/bd.png" id="8_qry8y"]
+[ext_resource type="Texture2D" uid="uid://cjsym8h54fht8" path="res://assets/enemies/0slash/h.png" id="11_2qtsd"]
+[ext_resource type="Texture2D" uid="uid://c0skdil61d8fi" path="res://assets/enemies/1blunt/hd.png" id="12_06fdj"]
+[ext_resource type="Texture2D" uid="uid://d2nfkhc426uli" path="res://assets/enemies/2pierce/hd.png" id="13_8qhal"]
+[ext_resource type="Texture2D" uid="uid://b8nslclubsvv0" path="res://assets/enemies/3light/hd.png" id="14_owm54"]
+[ext_resource type="Texture2D" uid="uid://kbqsp5yc4lbq" path="res://assets/enemies/4heavy/hd.png" id="15_pyn4r"]
+[ext_resource type="Texture2D" uid="uid://ces20hgxh42up" path="res://assets/enemies/5elem/hd.png" id="16_2tb5r"]
+[ext_resource type="Texture2D" uid="uid://oemqkfm4sgvw" path="res://assets/enemies/6ment/hd.png" id="17_usmbp"]
+[ext_resource type="Texture2D" uid="uid://c8q440o1jtn7h" path="res://assets/enemies/0slash/lh.png" id="18_ftobq"]
+[ext_resource type="Texture2D" uid="uid://cnhis6acdb62m" path="res://assets/enemies/1blunt/lh.png" id="19_hbpjt"]
+[ext_resource type="Texture2D" uid="uid://byr7iwq44qqls" path="res://assets/enemies/2pierce/lh.png" id="20_1150b"]
+[ext_resource type="Texture2D" uid="uid://mvww2pkreutf" path="res://assets/enemies/3light/lh.png" id="21_8yrun"]
+[ext_resource type="Texture2D" uid="uid://dgpjk1eiuuufs" path="res://assets/enemies/4heavy/lh.png" id="22_2evqx"]
+[ext_resource type="Texture2D" uid="uid://b4ejip2o1y3og" path="res://assets/enemies/5elem/lh.png" id="23_sbfpf"]
+[ext_resource type="Texture2D" uid="uid://d31qj5sq4rg58" path="res://assets/enemies/6ment/lh.png" id="24_exlpu"]
+[ext_resource type="Texture2D" uid="uid://cb6pdw8ufc2o" path="res://assets/enemies/0slash/rh.png" id="25_nbkny"]
+[ext_resource type="Texture2D" uid="uid://b43acf6lvapks" path="res://assets/enemies/1blunt/rh.png" id="26_tt3a1"]
+[ext_resource type="Texture2D" uid="uid://bgrufl5vv4bp0" path="res://assets/enemies/2pierce/rh.png" id="27_mh43x"]
+[ext_resource type="Texture2D" uid="uid://cj7lie065f1s5" path="res://assets/enemies/3light/rh.png" id="28_i2qhd"]
+[ext_resource type="Texture2D" uid="uid://dpmaq28fo1srf" path="res://assets/enemies/4heavy/rh.png" id="29_ihfxv"]
+[ext_resource type="Texture2D" uid="uid://bro0qcoa2t3xk" path="res://assets/enemies/5elem/rh.png" id="30_3wbmb"]
+[ext_resource type="Texture2D" uid="uid://sn23ojdq6c38" path="res://assets/enemies/6ment/rh.png" id="31_ych8r"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_u7ry8"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ovfii"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mo8gx")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p8db7")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_u4kxy")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_xgamy")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_re6ey")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_bqxxi")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qry8y")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_88cr1")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_u7ry8")
@@ -14,28 +107,258 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_88cr1"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7ry8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_2qtsd")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_06fdj")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_8qhal")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_owm54")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_pyn4r")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_2tb5r")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_usmbp")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_88cr1")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u7ry8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ptlq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ftobq")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_hbpjt")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_1150b")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_8yrun")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_2evqx")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_sbfpf")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_exlpu")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_88cr1")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u7ry8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_inmt4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_nbkny")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_tt3a1")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_mh43x")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_i2qhd")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_ihfxv")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_3wbmb")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_ych8r")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_88cr1")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u7ry8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_88cr1"]
-radius = 60.0
+radius = 89.0056
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mo8gx"]
+radius = 196.825
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yih0o"]
-radius = 100.0
+radius = 602.336
 
 [node name="zondbie" type="RigidBody2D"]
 script = ExtResource("1_2141s")
 
 [node name="body" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_u7ry8")
+sprite_frames = SubResource("SpriteFrames_ovfii")
+animation = &"6"
 
 [node name="head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u7ry8")
+animation = &"6"
 
 [node name="weapoff" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_u7ry8")
+sprite_frames = SubResource("SpriteFrames_ptlq8")
+animation = &"6"
 
 [node name="hat" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_88cr1")
+sprite_frames = SubResource("SpriteFrames_inmt4")
+animation = &"6"
 
 [node name="hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_88cr1")
@@ -44,7 +367,13 @@ shape = SubResource("CircleShape2D_88cr1")
 
 [node name="ayo" type="CollisionShape2D" parent="hurtbox/hitbox"]
 position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_mo8gx")
+
+[node name="wiew" type="Area2D" parent="hurtbox"]
+
+[node name="ayo" type="CollisionShape2D" parent="hurtbox/wiew"]
 shape = SubResource("CircleShape2D_yih0o")
+debug_color = Color(0.89, 0, 0.726833, 0.172549)
 
 [node name="health" type="ProgressBar" parent="."]
 offset_left = -50.0
@@ -53,6 +382,7 @@ offset_right = 50.0
 offset_bottom = 107.0
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="body_entered" from="hurtbox/hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hurtbox/hitbox" to="." method="_on_hitbox_body_exited"]

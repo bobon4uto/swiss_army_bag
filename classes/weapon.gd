@@ -57,9 +57,9 @@ func _ready():
 
 func set_weapon(ID):
 	current_weap=ID
-	var name : String= possible_weapons[current_weap] 
-	sprite.play(name)
-	var wprop_cur = weap_dict[name]
+	var namew : String= possible_weapons[current_weap] 
+	sprite.play(namew)
+	var wprop_cur = weap_dict[namew]
 	set_shape(wprop_cur[wprop.SIZE],wprop_cur[wprop.OFFSET])
 	
 	damage = wprop_cur[wprop.DAMAGE]
