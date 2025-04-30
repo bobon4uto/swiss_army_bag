@@ -4,6 +4,8 @@ class_name weapon
 
 var wname : String = "gun"
 
+var ammo : int = -1
+
 var current_weap = 0
 var damage = 0
 var knockback =0
@@ -16,6 +18,7 @@ const BASE_ANIM_SPEED =1.0
 enum wprop {
 	DAMAGE,
 	KNOCKBACK,
+	AMMO,
 	TYPE,
 	SIZE,
 	OFFSET,
@@ -38,13 +41,15 @@ enum dam_type {
 }
 
 
-const possible_weapons = ["gun", "sword", "mace"]
+const possible_weapons = ["hand","gun", "sword", "mace"]
 
 const weap_dict = {
-	#"name":[damage,knockback type, hitsize,offset,shoot,swing,special]
-	"gun":[10,1,[dam_type.PIERCE],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
-	"sword":[10,10,[dam_type.SLASH],Vector2(60,180),Vector2(0,-60),false,true,false,0.5],
-	"mace":[10,100,[dam_type.BLUNT],Vector2(60,180),Vector2(0,-60),false,true,false,0.2]
+	#"name":[damage,knockback, ammo, type, hitsize,offset,shoot,swing,special]
+	"hand":[10,10,-1,[],Vector2(60,60),Vector2(0,-30),false,true,false,1.0],
+	
+	"gun":[10,1,17,[dam_type.PIERCE],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
+	"sword":[10,10,-1,[dam_type.SLASH],Vector2(60,180),Vector2(0,-60),false,true,false,0.5],
+	"mace":[10,100,-1,[dam_type.BLUNT],Vector2(60,180),Vector2(0,-60),false,true,false,0.2]
 }
 
 var shoot = false
@@ -71,6 +76,7 @@ func set_weapon(ID):
 	
 	damage = wprop_cur[wprop.DAMAGE]
 	knockback = wprop_cur[wprop.KNOCKBACK]
+	ammo = wprop_cur[wprop.AMMO]
 	dam_tip = wprop_cur[wprop.TYPE]
 	
 	shoot= wprop_cur[wprop.SHOOT]

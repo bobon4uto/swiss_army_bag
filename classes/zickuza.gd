@@ -13,6 +13,7 @@ const SPEED = 500
 @export var wlabel : Label
 @export var comment : RichTextLabel
 @export var UIweap : AnimatedSprite2D
+@export var UIammo : Label
 @onready var timer = $Timer
 @onready var spl : AnimationPlayer= $splash
 @onready var splspr = $weaponsplash
@@ -33,6 +34,7 @@ var bulleting = false
 
 const comm = {
 	#"name":[damage,knockback type, hitsize,offset,shoot,swing,special]
+	"hand":"I'm not as commited as my teacher - George, but I can punch some faces.",
 	"gun":"When mana runs out, I use bullets.",
 	"sword":"Honestly, I dont get why they're so popular...",
 	"duck trigger":"IT'S TIME TO PULL MY DUCK TRIGGER!"
@@ -113,7 +115,7 @@ func handle_input() -> Vector2:
 	else:
 		anim.set("parameters/TimeScale/scale",weap.BASE_ANIM_SPEED)
 	if Input.is_action_just_pressed("gacha"):
-		set_weapon_in_hand(randi()%available_weapons)
+		set_weapon_in_hand(randi()%(available_weapons)+1)
 		
 		anim.set("parameters/TimeScale/scale",weap.animation_speed)
 	
@@ -140,6 +142,11 @@ func set_weapon_in_hand(id):
 	UIweap.play(weap.wname)
 	splspr.play(weap.wname)
 	spl.play("spl")
+	
+	if weap.ammo > 0:
+		UIammo.text = "Uses left : "+ str(weap.ammo)
+	else:
+		UIammo.text = ""
 
 
 func stop_attack():
@@ -198,6 +205,15 @@ func on_bullet_hit(body):
 		body.handle_hit(weap.damage,weap.knockback,weap.dam_tip)
 
 func shoot_bullet():
+	if (weap.ammo > 0):
+		weap.ammo-=1
+		if weap.ammo > 0:
+			UIammo.text = "Uses left : "+ str(weap.ammo)
+		else:
+			UIammo.text = ""
+	else:
+		set_weapon_in_hand(0)
+		return
 	var new_bullet = preload("res://classes/bullet.tscn").instantiate()
 	if rclickmovement != Vector2.ZERO:
 		new_bullet.velocity=rclickmovement*100000
