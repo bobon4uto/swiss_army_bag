@@ -1,6 +1,9 @@
 extends Area2D
 class_name weapon
 
+
+var wname : String = "gun"
+
 var current_weap = 0
 var damage = 0
 var knockback =0
@@ -8,7 +11,7 @@ var dam_tip : Array = []
 var animation_speed =1.0
 const BASE_ANIM_SPEED =1.0
 
-const possible_weapons = ["gun", "sword", "mace"]
+
 
 enum wprop {
 	DAMAGE,
@@ -34,9 +37,12 @@ enum dam_type {
 	MENT
 }
 
+
+const possible_weapons = ["gun", "sword", "mace"]
+
 const weap_dict = {
 	#"name":[damage,knockback type, hitsize,offset,shoot,swing,special]
-	"gun":[10,0,[dam_type.PIERCE],Vector2(60,60),Vector2(0,-30),true,false,false,1.0],
+	"gun":[10,1,[dam_type.PIERCE],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
 	"sword":[10,10,[dam_type.SLASH],Vector2(60,180),Vector2(0,-60),false,true,false,0.5],
 	"mace":[10,100,[dam_type.BLUNT],Vector2(60,180),Vector2(0,-60),false,true,false,0.2]
 }
@@ -58,6 +64,7 @@ func _ready():
 func set_weapon(ID):
 	current_weap=ID
 	var namew : String= possible_weapons[current_weap] 
+	wname = namew
 	sprite.play(namew)
 	var wprop_cur = weap_dict[namew]
 	set_shape(wprop_cur[wprop.SIZE],wprop_cur[wprop.OFFSET])

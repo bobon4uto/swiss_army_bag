@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=12 format=3 uid="uid://b23kbhf8s7uao"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=13 format=3 uid="uid://b23kbhf8s7uao"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0a1w3"]
 animation = &"idlel"
@@ -42,6 +42,10 @@ advance_expression = "!shooting"
 advance_mode = 2
 advance_expression = "!attacking"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_boura"]
+advance_mode = 2
+advance_expression = "shooting"
+
 [resource]
 states/Start/position = Vector2(193, 87)
 states/idlespace/node = SubResource("AnimationNodeBlendSpace1D_84k2g")
@@ -50,4 +54,4 @@ states/shoot/node = SubResource("AnimationNodeAnimation_6otr0")
 states/shoot/position = Vector2(550, 189)
 states/swingr/node = SubResource("AnimationNodeAnimation_qq0ir")
 states/swingr/position = Vector2(567, 70)
-transitions = ["Start", "idlespace", SubResource("AnimationNodeStateMachineTransition_iccqj"), "idlespace", "swingr", SubResource("AnimationNodeStateMachineTransition_6otr0"), "swingr", "idlespace", SubResource("AnimationNodeStateMachineTransition_umovh"), "swingr", "shoot", SubResource("AnimationNodeStateMachineTransition_s6y4d"), "shoot", "swingr", SubResource("AnimationNodeStateMachineTransition_pmb7k"), "shoot", "idlespace", SubResource("AnimationNodeStateMachineTransition_qq0ir")]
+transitions = ["Start", "idlespace", SubResource("AnimationNodeStateMachineTransition_iccqj"), "idlespace", "swingr", SubResource("AnimationNodeStateMachineTransition_6otr0"), "swingr", "idlespace", SubResource("AnimationNodeStateMachineTransition_umovh"), "swingr", "shoot", SubResource("AnimationNodeStateMachineTransition_s6y4d"), "shoot", "swingr", SubResource("AnimationNodeStateMachineTransition_pmb7k"), "shoot", "idlespace", SubResource("AnimationNodeStateMachineTransition_qq0ir"), "idlespace", "shoot", SubResource("AnimationNodeStateMachineTransition_boura")]

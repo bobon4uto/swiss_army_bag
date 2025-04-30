@@ -9,8 +9,13 @@ const SPEED = 500
 @onready var center = $actual_center
 @onready var hand = %hand
 @onready var weap = %weapon
-@onready var health = %health
+@export var health : ProgressBar
+@export var wlabel : Label
+@export var comment : RichTextLabel
+@export var UIweap : AnimatedSprite2D
 @onready var timer = $Timer
+@onready var spl : AnimationPlayer= $splash
+@onready var splspr = $weaponsplash
 var checkpoint = Vector2(0,0)
 var attacking = false
 var shooting = false
@@ -18,9 +23,23 @@ var facing_dir = Vector2.RIGHT
 var bored = false
 var available_weapons = 3
 var rclickmovement = Vector2.ZERO
+var lastlook = Vector2.ONE
 var shot_landed = false
 var retrying:bool=false
 const MAX_HELTH = 100
+var bulleting = false
+
+
+
+const comm = {
+	#"name":[damage,knockback type, hitsize,offset,shoot,swing,special]
+	"gun":"When mana runs out, I use bullets.",
+	"sword":"Honestly, I dont get why they're so popular...",
+	"duck trigger":"IT'S TIME TO PULL MY DUCK TRIGGER!"
+}
+
+
+
 
 func _ready():
 	hand.z_index=-1
@@ -35,38 +54,67 @@ func _physics_process(_delta: float) -> void:
 	anim.set("parameters/AnimationNodeStateMachine/idlespace/blend_position",facing_dir.x)
 	move_and_slide()
 
-
-func handle_input() -> Vector2:
-	var motion = Vector2.ZERO
+func get_motion() -> Vector2:
+	var motion : Vector2 = Vector2.ZERO
+	
 	if Input.is_action_pressed("ui_right"):
 		motion.x+=1
-
-
-
 	if Input.is_action_pressed("ui_up"):
 		motion.y+=-1
 	if Input.is_action_pressed("ui_left"):
 		motion.x+=-1
-
-		
 	if Input.is_action_pressed("ui_down"):
 		motion.y+=1
+	
+
+	
+	motion = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down",0.1)
+	
 	if Input.is_action_pressed("rmove"):
-		motion = rclickmovement
+		motion = mouse_pos_dir()
+	
+	
+	return motion
+
+func mouse_pos_dir() -> Vector2:
+	return get_viewport().get_camera_2d().get_global_mouse_position() - position
+
+
+func get_attack_dir(motion) -> Vector2:
+	
+	var look = Input.get_vector("look_left", "look_right", "look_up", "look_down",0.1)
+	if Input.is_action_pressed("llook"):
+		look = mouse_pos_dir()
+	if look==Vector2.ZERO:
+		look= motion
+	return look
+
+func handle_input() -> Vector2:
+	var motion = get_motion()
+	var look = get_attack_dir(motion)
+	rclickmovement = look
+	if look != Vector2.ZERO:
+		lastlook = look
+	
 	if motion != Vector2.ZERO:
 		facing_dir=motion
-	attacking= Input.is_action_pressed("attack")
+	
+	attacking= Input.is_action_pressed("attack") or attacking
+	
+
+	
 	if !shooting:
-		shooting=attacking and weap.shoot
-	if shooting:
-		attacking = true
+		shooting=Input.is_action_pressed("attack") and weap.shoot
+	else:
+		centre_look_at(Vector2.ZERO)
 	if attacking:
 		anim.set("parameters/TimeScale/scale",weap.animation_speed)
 		
 	else:
 		anim.set("parameters/TimeScale/scale",weap.BASE_ANIM_SPEED)
 	if Input.is_action_just_pressed("gacha"):
-		weap.set_weapon(randi()%available_weapons)
+		set_weapon_in_hand(randi()%available_weapons)
+		
 		anim.set("parameters/TimeScale/scale",weap.animation_speed)
 	
 	if facing_dir.x>0:
@@ -82,12 +130,34 @@ func handle_input() -> Vector2:
 	
 	return motion.normalized()
 
+func set_weapon_in_hand(id):
+	weap.set_weapon(id)
+	wlabel.text = weap.wname 
+	comment.text = "it's a "+weap.wname + "."
+	
+	if comm.has(weap.wname):
+		comment.text = comm[weap.wname]
+	UIweap.play(weap.wname)
+	splspr.play(weap.wname)
+	spl.play("spl")
+
+
+func stop_attack():
+	attacking=false
 
 func centre_look_at(pos:Vector2):
-	if attacking:
-		center.look_at(pos)
+	
+	if rclickmovement.x>0:
+		weap.sprite.flip_h = false
 	else:
+		weap.sprite.flip_h = true
+	if pos.x >10:
 		center.rotation=0
+		return
+	if pos==Vector2.ZERO:
+		pos =position+rclickmovement
+	center.look_at(pos)
+
 
 
 func handle_hit(damage):
@@ -122,3 +192,21 @@ func _on_timer_timeout() -> void:
 	if retrying:
 		emit_signal("retry")
 		retrying=false
+
+func on_bullet_hit(body):
+	if body is enemy:
+		body.handle_hit(weap.damage,weap.knockback,weap.dam_tip)
+
+func shoot_bullet():
+	var new_bullet = preload("res://classes/bullet.tscn").instantiate()
+	if rclickmovement != Vector2.ZERO:
+		new_bullet.velocity=rclickmovement*100000
+	else: 
+		new_bullet.velocity=lastlook*100000
+	new_bullet.position = position
+	new_bullet.speed = weap.animation_speed * 1000
+	new_bullet.wname=weap.wname
+	new_bullet.hitnum=int(floor( weap.knockback))
+	new_bullet.scale = Vector2.ONE* weap.knockback/4
+	new_bullet.connect("body_entered",on_bullet_hit)
+	get_parent().add_child(new_bullet)

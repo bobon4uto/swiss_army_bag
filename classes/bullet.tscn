@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c66so47opcdtr"]
+
+[ext_resource type="Script" uid="uid://c5vg3cy6i548f" path="res://classes/bullet.gd" id="1_ft5th"]
+[ext_resource type="Texture2D" uid="uid://dnhtbvyxfhwgd" path="res://assets/icons/silverlink.png" id="2_6if88"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bv00w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6if88")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5rhw"]
+radius = 53.0094
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_ft5th")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bv00w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h5rhw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxgy67qobtvlp"]
+[gd_scene load_steps=8 format=3 uid="uid://cxgy67qobtvlp"]
 
 [ext_resource type="Script" uid="uid://d00yfv0bvuj4r" path="res://scenes/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dw46v0cfvd7y8" path="res://classes/zickuza.tscn" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://c068tgmd843c1" path="res://icon.svg" id="2_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://cshm5h3o0ypj5" path="res://assets/icons/THETOURMENTNEXUS.png" id="2_k0juu"]
+[ext_resource type="PackedScene" uid="uid://v64yll6nyrty" path="res://classes/ui.tscn" id="5_71j4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0juu"]
 size = Vector2(128, 128)
@@ -22,7 +23,31 @@ polygon = PackedVector2Array(-14980, 7245, 128, 7444, -5, -5544, -15378, -5213)
 z_index = -10
 position = Vector2(15108, 66)
 color = Color(0.363075, 0.47, 0.0423, 1)
-polygon = PackedVector2Array(-14980, 7245, 128, 7444, -5, -5544, -15378, -5213)
+polygon = PackedVector2Array(-14980, 7245, -11252, 7308, -11102, -5388, -15378, -5213)
+
+[node name="grass3" type="Polygon2D" parent="."]
+z_index = -10
+position = Vector2(18544, -182)
+color = Color(0.283799, 0.370313, 0.0268749, 1)
+polygon = PackedVector2Array(-14239, 6959, -11252, 7308, -11102, -5388, -15378, -5213)
+
+[node name="grass4" type="Polygon2D" parent="."]
+z_index = -10
+position = Vector2(22178, -182)
+color = Color(0.229098, 0.301591, 0.0180089, 1)
+polygon = PackedVector2Array(-16579, 6759, -11252, 7308, -11102, -5388, -14389, -5140)
+
+[node name="grass5" type="Polygon2D" parent="."]
+z_index = -10
+position = Vector2(26360, -82)
+color = Color(0.17538, 0.234136, 0.011057, 1)
+polygon = PackedVector2Array(-15882, 6759, -11252, 7308, -11102, -5388, -15086, -5339)
+
+[node name="grass6" type="Polygon2D" parent="."]
+z_index = -10
+position = Vector2(30642, -182)
+color = Color(0.128358, 0.175107, 0.00645238, 1)
+polygon = PackedVector2Array(-15882, 6759, -11252, 7308, -11102, -5388, -15783, -5438)
 
 [node name="obstcles" type="Node2D" parent="."]
 z_index = -5
@@ -99,8 +124,12 @@ collision_mask = 3
 [node name="shape" type="CollisionShape2D" parent="obstcles/Icon4/bottom"]
 shape = SubResource("RectangleShape2D_k0juu")
 
-[node name="Zickuza" parent="." instance=ExtResource("1_rwgxs")]
+[node name="Zickuza" parent="." node_paths=PackedStringArray("health", "wlabel", "comment", "UIweap") instance=ExtResource("1_rwgxs")]
 position = Vector2(30, 123)
+health = NodePath("../CanvasLayer/UI/lt/HBoxContainer/VBoxContainer/healthbar")
+wlabel = NodePath("../CanvasLayer/UI/rb/VBoxContainer/weap")
+comment = NodePath("../CanvasLayer/UI/lt/HBoxContainer/MarginContainer/RichTextLabel")
+UIweap = NodePath("../CanvasLayer/UI/rb/VBoxContainer/weapanel/AspectRatioContainer/AnimatedSprite2D")
 
 [node name="cam" type="Camera2D" parent="Zickuza"]
 unique_name_in_owner = true
@@ -125,5 +154,11 @@ position = Vector2(-459, -4)
 scale = Vector2(29.4505, 34.2708)
 shape = SubResource("RectangleShape2D_71j4m")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("5_71j4m")]
+
 [connection signal="retry" from="Zickuza" to="." method="_on_zickuza_retry"]
 [connection signal="body_entered" from="triggers/spawn_enemies" to="." method="_on_spawn_enemies_body_entered"]
+
+[editable path="CanvasLayer/UI"]

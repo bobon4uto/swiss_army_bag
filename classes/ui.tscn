@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://v64yll6nyrty"]
+
+[ext_resource type="Texture2D" uid="uid://cjo8n4igp6mce" path="res://assets/icons/settings.png" id="1_c6p4a"]
+[ext_resource type="Script" uid="uid://bujwgimhb3n45" path="res://classes/ui.gd" id="1_qbtsj"]
+[ext_resource type="Texture2D" uid="uid://dfo30yp6lphj0" path="res://assets/weapons/mace/mace.png" id="3_hyijr"]
+[ext_resource type="SpriteFrames" uid="uid://03odwykshfxl" path="res://classes/weapon.tres" id="4_hyijr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5k6w"]
+bg_color = Color(0.69, 0.5842, 0.3726, 0.278431)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6p4a"]
+bg_color = Color(0.156801, 0.147551, 0.161258, 0.45098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbtsj"]
+bg_color = Color(0.74459, 0.77, 0.2618, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyijr"]
+
+[sub_resource type="Theme" id="Theme_qbtsj"]
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_n5k6w")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_c6p4a")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_qbtsj")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/styles/background = SubResource("StyleBoxFlat_hyijr")
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qbtsj")
+script = ExtResource("1_qbtsj")
+
+[node name="lt" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.85
+anchor_bottom = 0.3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="lt"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="lt/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+
+[node name="Zickuza panel" type="PanelContainer" parent="lt/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="lt/HBoxContainer/VBoxContainer/Zickuza panel"]
+layout_mode = 2
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="lt/HBoxContainer/VBoxContainer/Zickuza panel/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("1_c6p4a")
+stretch_mode = 5
+
+[node name="healthbar" type="ProgressBar" parent="lt/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="lt/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="lt/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 17
+text = "Hi! I'm Zickuza, a special unit of Silver sunrize corparation, codename \"yellow duck\". I was ordered to clear this area from the undead. 
+And to do this, I was given a \"Swiss army bag\" that contains many different weapons! some are better than others, and some have specific uses. BUUUT I dont know how to use it properly, so I will have to gamble every time I pull a weapon out of it. "
+vertical_alignment = 1
+
+[node name="rb" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.85
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="rb"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="weap" type="Label" parent="rb/VBoxContainer"]
+layout_mode = 2
+text = "weapon"
+
+[node name="weapanel" type="PanelContainer" parent="rb/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="rb/VBoxContainer/weapanel"]
+layout_mode = 2
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="rb/VBoxContainer/weapanel/AspectRatioContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_hyijr")
+stretch_mode = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rb/VBoxContainer/weapanel/AspectRatioContainer"]
+sprite_frames = ExtResource("4_hyijr")
+animation = &"sword"
+centered = false
