@@ -4,16 +4,16 @@
 [ext_resource type="SpriteFrames" uid="uid://03odwykshfxl" path="res://classes/weapon.tres" id="2_n6etd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6etd"]
-size = Vector2(99, 270)
+size = Vector2(975, 150)
 
 [node name="weapon" type="Area2D"]
 script = ExtResource("1_n6etd")
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, -149.5)
+position = Vector2(-4, -75)
 shape = SubResource("RectangleShape2D_n6etd")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_n6etd")
-animation = &"merks"
+animation = &"ancient scroll"
 offset = Vector2(0, -80)

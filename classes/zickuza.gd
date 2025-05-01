@@ -294,6 +294,10 @@ func shoot_bullet():
 			boom("keg")
 			set_weapon_in_hand(0)
 			return
+		elif weap.wname.contains("null dereference"):
+			boom("null dereference")
+			set_weapon_in_hand(0)
+			return
 		elif weap.wname.contains("duck trigger"):
 			pull_my_duck_trigger()
 			set_weapon_in_hand(0)
@@ -322,6 +326,8 @@ func boom(n :String):
 		new_boom=preload("res://scenes/garlicboom.tscn").instantiate()
 	elif n.contains("keg"):
 		new_boom=preload("res://scenes/kegaboom.tscn").instantiate()
+	elif n.contains("null dereference"):
+		new_boom=preload("res://scenes/gpu_particles_2d.tscn").instantiate()
 	else:
 		return
 	attacking=false

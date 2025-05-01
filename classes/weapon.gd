@@ -87,9 +87,8 @@ const weap_dict = {
 	"brass knuckles":[20,10,-1,[dam_type.BLUNT],Vector2(60,60),Vector2(0,-30),false,true,false,1.0],
 	
 	
-
-	"chainsaw":[2,2,-1,[dam_type.SLASH],Vector2(100,270),Vector2(0,-150),false,true,false,0.5],
-	"plazma sword":[2,2,-1,[dam_type.SLASH],Vector2(25,320),Vector2(0,-160),false,true,false,0.5],
+	"chainsaw":[25,2,-1,[dam_type.SLASH],Vector2(100,270),Vector2(0,-150),false,true,false,0.5],
+	"plazma sword":[30,2,-1,[dam_type.ELEM],Vector2(25,320),Vector2(0,-160),false,true,false,0.5],
 	"witch hunter":[30,50,17,[dam_type.PIERCE, dam_type.MENT],Vector2(60,60),Vector2(0,-30),true,false,false,1.0],
 	"white nights":[40,10,17,[dam_type.PIERCE, dam_type.LIGHT],Vector2(25,480),Vector2(0,-80),true,false,false,2.0],
 	"fire whip":[2,2,-1,[dam_type.SLASH],Vector2(110,100),Vector2(15,-250),false,true,false,0.5],
@@ -98,8 +97,8 @@ const weap_dict = {
 	"duck trigger":[0,1,17,[],Vector2(60,60),Vector2(0,-30),true,false,true,2.0],
 	
 	
-	"ancient scroll":[10,100,-1,[dam_type.BLUNT, dam_type.ELEM],Vector2(500,20),Vector2(0,-10),false,true,false,0.5],
-	"merks":[10,10,-1,[dam_type.BLUNT, dam_type.ELEM],Vector2(140,1000),Vector2(0,-500),false,true,false,1.0],
+	"ancient scroll":[50,100,-1,[dam_type.BLUNT, dam_type.ELEM],Vector2(975,150),Vector2(0,-75),false,true,false,0.5],
+	"merks":[100,10,-1,[dam_type.BLUNT, dam_type.ELEM],Vector2(250,1340),Vector2(0,-90),false,true,false,1.0],
 	"null dereference":[200,1,17,[dam_type.MENT,dam_type.HEAVY],Vector2(60,60),Vector2(0,-30),true,false,true,2.0],
 	
 	"black and white silver":[50,10,30,[dam_type.PIERCE, dam_type.MENT],Vector2(60,60),Vector2(0,-30),true,false,true,2.0],
