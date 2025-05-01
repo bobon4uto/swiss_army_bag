@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dw46v0cfvd7y8"]
+[gd_scene load_steps=35 format=3 uid="uid://dw46v0cfvd7y8"]
 
 [ext_resource type="Script" uid="uid://wiklv8lfx07u" path="res://classes/zickuza.gd" id="1_kdb3x"]
 [ext_resource type="Texture2D" uid="uid://d4gshv443ayrc" path="res://assets/Zickuza/zickuza-the_yellow_duckl.png" id="2_bbnjn"]
@@ -10,6 +10,8 @@
 [ext_resource type="SpriteFrames" uid="uid://03odwykshfxl" path="res://classes/weapon.tres" id="8_bbnjn"]
 [ext_resource type="AudioStream" uid="uid://doqfduvnprydf" path="res://assets/sounds/laserShoot.wav" id="9_dhlvq"]
 [ext_resource type="AudioStream" uid="uid://cp4nirjvujadr" path="res://assets/sounds/swingr.wav" id="10_gp5a1"]
+[ext_resource type="AudioStream" uid="uid://bt2v6ohm7frvd" path="res://assets/sounds/ding.wav" id="11_dx6hc"]
+[ext_resource type="AudioStream" uid="uid://dl7qvopgf4ehy" path="res://assets/sounds/boom.wav" id="12_0a1w3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fnict"]
 radius = 43.0
@@ -111,6 +113,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("actual_center/centre/hand:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_gp5a1"]
@@ -509,9 +523,63 @@ tracks/2/keys = {
 "values": [-3.14159, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_84k2g"]
+resource_name = "boom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("actual_center/centre/hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.22),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(28, -4), Vector2(0, 0), Vector2(0, -99), Vector2(0, -99)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("actual_center/centre/hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.22),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.5708, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("actual_center/centre/hand:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.22),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.233333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"boom"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7wis1"]
 _data = {
 &"RESET": SubResource("Animation_ypdeb"),
+&"boom": SubResource("Animation_84k2g"),
 &"idlel": SubResource("Animation_gp5a1"),
 &"idler": SubResource("Animation_dhlvq"),
 &"shoot": SubResource("Animation_dx6hc"),
@@ -540,7 +608,8 @@ nodes/TimeScale/position = Vector2(0, 120)
 nodes/output/position = Vector2(280, 120)
 node_connections = [&"Add2", 0, &"AnimationNodeStateMachine", &"Add2", 1, &"StateMachine", &"TimeScale", 0, &"Add2", &"output", 0, &"TimeScale"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy011"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0a1w3"]
+radius = 657.469
 
 [sub_resource type="Animation" id="Animation_2eef7"]
 length = 0.001
@@ -651,6 +720,11 @@ _data = {
 &"spl": SubResource("Animation_0a1w3")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dx6hc"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("11_dx6hc")
+
 [node name="Zickuza" type="CharacterBody2D"]
 script = ExtResource("1_kdb3x")
 
@@ -680,6 +754,12 @@ parameters/TimeScale/scale = 1.0
 
 [node name="actual_center" type="Node2D" parent="."]
 
+[node name="booms" type="Area2D" parent="actual_center"]
+unique_name_in_owner = true
+
+[node name="shape" type="CollisionShape2D" parent="actual_center/booms"]
+shape = SubResource("CircleShape2D_0a1w3")
+
 [node name="centre" type="Node2D" parent="actual_center"]
 
 [node name="hand" type="Node2D" parent="actual_center/centre"]
@@ -690,13 +770,6 @@ rotation = 1.5708
 [node name="weapon" parent="actual_center/centre/hand" instance=ExtResource("4_ypdeb")]
 unique_name_in_owner = true
 position = Vector2(-0.85953, -0.511087)
-
-[node name="bullet" type="Area2D" parent="actual_center/centre/hand"]
-unique_name_in_owner = true
-visible = false
-
-[node name="shape" type="CollisionShape2D" parent="actual_center/centre/hand/bullet"]
-shape = SubResource("RectangleShape2D_wy011")
 
 [node name="weaponsplash" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -718,6 +791,18 @@ volume_db = -14.991
 bus = &"effects"
 
 [node name="ding" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_dx6hc")
+pitch_scale = 1.2
+bus = &"effects"
+
+[node name="boom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_0a1w3")
+pitch_scale = 1.2
+bus = &"effects"
+
+[node name="DuckTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="actual_center/centre/hand/bullet" to="." method="_on_bullet_body_entered"]
+[connection signal="timeout" from="DuckTimer" to="." method="_on_duck_timer_timeout"]

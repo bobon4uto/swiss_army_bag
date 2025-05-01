@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxgy67qobtvlp"]
+[gd_scene load_steps=10 format=3 uid="uid://cxgy67qobtvlp"]
 
 [ext_resource type="Script" uid="uid://d00yfv0bvuj4r" path="res://scenes/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dw46v0cfvd7y8" path="res://classes/zickuza.tscn" id="1_rwgxs"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://v64yll6nyrty" path="res://classes/ui.tscn" id="5_71j4m"]
 [ext_resource type="Script" uid="uid://d3iv5h8cp5ati" path="res://scenes/triggers.gd" id="6_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://bdfg1qbv7ixtr" path="res://classes/spawn_enemies.tscn" id="6_i7141"]
-[ext_resource type="PackedScene" uid="uid://bgapcgm8jf2gu" path="res://classes/zondbie.tscn" id="8_7r4gi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0juu"]
 size = Vector2(128, 128)
@@ -203,130 +202,6 @@ collision_mask = 3
 [node name="shape" type="CollisionShape2D" parent="obstcles/progress3/Icon5/bottom"]
 shape = SubResource("RectangleShape2D_k0juu")
 
-[node name="progress5" type="Node2D" parent="obstcles"]
-position = Vector2(5877, 106)
-
-[node name="door" parent="obstcles/progress5" instance=ExtResource("4_qfnet")]
-position = Vector2(-2.86963, 0.0891113)
-scale = Vector2(5.90339, 6.81554)
-
-[node name="Icon6" type="Sprite2D" parent="obstcles/progress5"]
-position = Vector2(-35.8694, -1046.91)
-scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
-
-[node name="bottom" type="StaticBody2D" parent="obstcles/progress5/Icon6"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="obstcles/progress5/Icon6/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
-[node name="Icon5" type="Sprite2D" parent="obstcles/progress5"]
-position = Vector2(-19.8694, 1086.09)
-scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
-
-[node name="bottom" type="StaticBody2D" parent="obstcles/progress5/Icon5"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="obstcles/progress5/Icon5/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
-[node name="progress6" type="Node2D" parent="obstcles"]
-position = Vector2(9556, 155)
-
-[node name="door" parent="obstcles/progress6" instance=ExtResource("4_qfnet")]
-position = Vector2(-2.86963, 0.0891113)
-scale = Vector2(5.90339, 6.81554)
-
-[node name="Icon6" type="Sprite2D" parent="obstcles/progress6"]
-position = Vector2(-35.8694, -1046.91)
-scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
-
-[node name="bottom" type="StaticBody2D" parent="obstcles/progress6/Icon6"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="obstcles/progress6/Icon6/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
-[node name="Icon5" type="Sprite2D" parent="obstcles/progress6"]
-position = Vector2(-19.8694, 1086.09)
-scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
-
-[node name="bottom" type="StaticBody2D" parent="obstcles/progress6/Icon5"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="obstcles/progress6/Icon5/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
-[node name="progress7" type="Node2D" parent="obstcles"]
-position = Vector2(12308, 538)
-
-[node name="door" parent="obstcles/progress7" instance=ExtResource("4_qfnet")]
-position = Vector2(-2.86963, 0.0891113)
-scale = Vector2(5.90339, 6.81554)
-
-[node name="Icon6" type="Sprite2D" parent="obstcles/progress7"]
-position = Vector2(-35.8694, -1046.91)
-scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
-
-[node name="bottom" type="StaticBody2D" parent="obstcles/progress7/Icon6"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="obstcles/progress7/Icon6/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
-[node name="Icon5" type="Sprite2D" parent="obstcles/progress7"]
-position = Vector2(-19.8694, 1086.09)
-scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
-
-[node name="bottom" type="StaticBody2D" parent="obstcles/progress7/Icon5"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="obstcles/progress7/Icon5/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
-[node name="progress8" type="Node2D" parent="obstcles"]
-position = Vector2(15939, -480)
-
-[node name="door" parent="obstcles/progress8" instance=ExtResource("4_qfnet")]
-position = Vector2(-2.86963, 0.0891113)
-scale = Vector2(5.90339, 6.81554)
-
-[node name="Icon6" type="Sprite2D" parent="obstcles/progress8"]
-position = Vector2(-35.8694, -1046.91)
-scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
-
-[node name="bottom" type="StaticBody2D" parent="obstcles/progress8/Icon6"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="obstcles/progress8/Icon6/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
-[node name="Icon5" type="Sprite2D" parent="obstcles/progress8"]
-position = Vector2(-19.8694, 1086.09)
-scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
-
-[node name="bottom" type="StaticBody2D" parent="obstcles/progress8/Icon5"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="shape" type="CollisionShape2D" parent="obstcles/progress8/Icon5/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
 [node name="progress4" type="Node2D" parent="obstcles"]
 position = Vector2(21050, -98)
 rotation = 3.10336
@@ -387,49 +262,15 @@ position = Vector2(1889, 65)
 monitoring = true
 
 [node name="spawn_enemies" parent="triggers" instance=ExtResource("6_i7141")]
-position = Vector2(4581, 111)
+position = Vector2(5159, 37)
 monitoring = true
-rangen = 500.0
-num = 3
-stage = 2
-
-[node name="coll" parent="triggers/spawn_enemies" index="0"]
-position = Vector2(-529, 0)
-
-[node name="spawn_enemies3" parent="triggers" instance=ExtResource("6_i7141")]
-position = Vector2(8097, 338)
-monitoring = true
-rangen = 500.0
-num = 3
-stage = 2
-size = 2.0
-
-[node name="coll" parent="triggers/spawn_enemies3" index="0"]
-position = Vector2(-1294, -244)
-
-[node name="spawn_enemies4" parent="triggers" instance=ExtResource("6_i7141")]
-position = Vector2(7910, -370)
-monitoring = true
-rangen = 500.0
-num = 3
-stage = 3
-size = 1.2
-
-[node name="coll" parent="triggers/spawn_enemies4" index="0"]
-position = Vector2(-1091, 456)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("5_71j4m")]
 
-[node name="zondbie" parent="." instance=ExtResource("8_7r4gi")]
-position = Vector2(-1330, -73)
-
 [connection signal="retry" from="Zickuza" to="." method="_on_zickuza_retry"]
 [connection signal="lines_edited_from" from="CanvasLayer/UI/TextEdit" to="." method="_on_text_edit_lines_edited_from"]
 [connection signal="pressed" from="CanvasLayer/UI/Button" to="." method="_on_button_pressed"]
 
-[editable path="triggers/spawn_enemies"]
-[editable path="triggers/spawn_enemies3"]
-[editable path="triggers/spawn_enemies4"]
 [editable path="CanvasLayer/UI"]

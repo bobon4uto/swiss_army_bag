@@ -1,7 +1,6 @@
-[gd_scene load_steps=49 format=3 uid="uid://bgapcgm8jf2gu"]
+[gd_scene load_steps=48 format=3 uid="uid://bgapcgm8jf2gu"]
 
 [ext_resource type="Script" uid="uid://c07d53gimqwbc" path="res://classes/zondbie.gd" id="1_2141s"]
-[ext_resource type="Texture2D" uid="uid://disdiqdu8rprh" path="res://assets/enemies/attackCircle.png" id="2_06fdj"]
 [ext_resource type="Texture2D" uid="uid://2gusak6rt5nr" path="res://assets/enemies/daedenemy.png" id="2_88cr1"]
 [ext_resource type="Texture2D" uid="uid://dopns2dk2tw0k" path="res://assets/enemies/0slash/bd.png" id="2_mo8gx"]
 [ext_resource type="Texture2D" uid="uid://c068tgmd843c1" path="res://icon.svg" id="2_u7ry8"]
@@ -382,9 +381,6 @@ clip_7/auto_advance = 0
 script = ExtResource("1_2141s")
 
 [node name="attack" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(1.99802, 1.99802)
-texture = ExtResource("2_06fdj")
 
 [node name="body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ovfii")
@@ -428,6 +424,7 @@ autostart = true
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamInteractive_re6ey")
+volume_db = 8.0
 autoplay = true
 bus = &"effects"
 

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdfg1qbv7ixtr"]
+
+[ext_resource type="Script" uid="uid://cwm6lanq5fmvr" path="res://classes/spawn_enemies.gd" id="1_tk20p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71j4m"]
+
+[node name="spawn_enemies" type="Area2D"]
+monitoring = false
+script = ExtResource("1_tk20p")
+
+[node name="coll" type="CollisionShape2D" parent="."]
+scale = Vector2(29.4505, 34.2708)
+shape = SubResource("RectangleShape2D_71j4m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

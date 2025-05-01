@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://4cpfmyn43m1b"]
+
+[ext_resource type="Texture2D" uid="uid://b2emnc1bpss2q" path="res://assets/weapons/8garlic.png" id="1_cem4w"]
+[ext_resource type="Script" uid="uid://fs2uaiuh6a1t" path="res://scenes/garlicboom.gd" id="2_yccjs"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yccjs"]
+particle_flag_disable_z = true
+angle_min = -473.1
+angle_max = 720.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 711.95
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 98, 0)
+
+[node name="garlicboom" type="GPUParticles2D"]
+emitting = false
+texture = ExtResource("1_cem4w")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_yccjs")
+script = ExtResource("2_yccjs")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

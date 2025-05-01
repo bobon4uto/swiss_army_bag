@@ -1,19 +1,81 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://03odwykshfxl"]
+[gd_resource type="SpriteFrames" load_steps=20 format=3 uid="uid://03odwykshfxl"]
 
 [ext_resource type="Texture2D" uid="uid://dvrwlwkdhsigx" path="res://assets/weapons/gun/gun.png" id="1_55aur"]
 [ext_resource type="Texture2D" uid="uid://b8lga16uk4fae" path="res://assets/weapons/DINGDINGPISTOLS.png" id="1_73gro"]
+[ext_resource type="Texture2D" uid="uid://buls7oplnh7eo" path="res://assets/weapons/12accardion.png" id="1_jxjt0"]
 [ext_resource type="Texture2D" uid="uid://duy0ccq1gqpgb" path="res://assets/weapons/hand.png" id="2_73gro"]
 [ext_resource type="Texture2D" uid="uid://dfo30yp6lphj0" path="res://assets/weapons/mace/mace.png" id="2_cvjb1"]
+[ext_resource type="Texture2D" uid="uid://bru5x3ufqdkwk" path="res://assets/weapons/5computermouse.png" id="2_prxl5"]
 [ext_resource type="Texture2D" uid="uid://cvww11i47wohe" path="res://assets/weapons/sword/sword.png" id="3_73gro"]
+[ext_resource type="Texture2D" uid="uid://bvsl5g7k1budc" path="res://assets/Zickuza/duck_trigger.png" id="3_icf38"]
+[ext_resource type="Texture2D" uid="uid://b2emnc1bpss2q" path="res://assets/weapons/8garlic.png" id="3_yce0l"]
+[ext_resource type="Texture2D" uid="uid://086rg16fvl2t" path="res://assets/weapons/13door.png" id="4_syfo0"]
+[ext_resource type="Texture2D" uid="uid://bguqifp8wvn0" path="res://assets/weapons/11guitar.png" id="5_7bq5h"]
+[ext_resource type="Texture2D" uid="uid://bfqgv7blvvre6" path="res://assets/weapons/2protractor.png" id="5_c7m35"]
+[ext_resource type="Texture2D" uid="uid://hd3kqr0b1drh" path="res://assets/weapons/4pokestick.png" id="5_ncter"]
+[ext_resource type="Texture2D" uid="uid://c2owffkcbje72" path="res://assets/weapons/1ruler.png" id="5_rlsmd"]
+[ext_resource type="Texture2D" uid="uid://bcmicy287iww0" path="res://assets/weapons/3spray.png" id="7_af7i8"]
+[ext_resource type="Texture2D" uid="uid://d2yftsaqm6ajj" path="res://assets/weapons/6stem.png" id="10_rmanw"]
+[ext_resource type="Texture2D" uid="uid://dfplja0bgg655" path="res://assets/weapons/10slingshot.png" id="11_oq6ws"]
+[ext_resource type="Texture2D" uid="uid://cmmvah7peyxr1" path="res://assets/weapons/7torch.png" id="12_yce0l"]
+[ext_resource type="Texture2D" uid="uid://cdwrpajkbwg4k" path="res://assets/weapons/9synth.png" id="14_nefkd"]
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jxjt0")
+}],
+"loop": true,
+"name": &"accordion",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_73gro")
 }],
 "loop": true,
 "name": &"black and white silver",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_prxl5")
+}],
+"loop": true,
+"name": &"computer mouse",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_syfo0")
+}],
+"loop": true,
+"name": &"door",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_icf38")
+}],
+"loop": true,
+"name": &"duck trigger",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yce0l")
+}],
+"loop": true,
+"name": &"garlic",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7bq5h")
+}],
+"loop": true,
+"name": &"guitar",
 "speed": 5.0
 }, {
 "frames": [{
@@ -42,9 +104,73 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("5_ncter")
+}],
+"loop": true,
+"name": &"pokestick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_c7m35")
+}],
+"loop": true,
+"name": &"protractor",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rlsmd")
+}],
+"loop": true,
+"name": &"ruler",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_oq6ws")
+}],
+"loop": true,
+"name": &"slingshot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_af7i8")
+}],
+"loop": true,
+"name": &"spray",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rmanw")
+}],
+"loop": true,
+"name": &"stem",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_73gro")
 }],
 "loop": true,
 "name": &"sword",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_nefkd")
+}],
+"loop": true,
+"name": &"synth",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_yce0l")
+}],
+"loop": true,
+"name": &"torch",
 "speed": 5.0
 }]

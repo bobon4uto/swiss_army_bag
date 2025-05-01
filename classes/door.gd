@@ -9,4 +9,9 @@ func _on_pass_body_entered(body: Node2D) -> void:
 
 func _on_stop_body_entered(body: Node2D) -> void:
 	if body is player:
+		body.checkpoint = body.position
 		door.position = Vector2(0,0)
+		#body.health.value=body.MAX_HELTH
+		
+		
+		

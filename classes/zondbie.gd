@@ -6,6 +6,7 @@ class_name enemy
 @export var speed = 400
 @export var max_health = 100
 @export var damage = 10
+
 var effective :Array= []
 var ineffective :Array= []
 var start_pos = Vector2.ZERO
@@ -32,8 +33,15 @@ func _ready():
 	collision_mask=2
 	start_pos=position
 
+func rescale(vscale):
+	for child in get_children():
+		if child.has_method("set_scale"):
+			child.set_scale(vscale)
+		
+
 func generate():
 	#max_health = randf_range(100*stage,100*stage*1.5)
+	
 	effective.clear()
 	ineffective.clear()
 	health.max_value=max_health
@@ -88,7 +96,7 @@ func handle_hit(damagen, knockback, dam_types:Array):
 	
 
 	for type in dam_types:
-		s.switch_to_clip_by_name(str(type))
+		s.switch_to_clip(type)
 		for etype in effective:
 			if type == etype:
 				type_multi*=2

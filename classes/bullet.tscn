@@ -1,12 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://c66so47opcdtr"]
+[gd_scene load_steps=10 format=3 uid="uid://c66so47opcdtr"]
 
 [ext_resource type="Script" uid="uid://c5vg3cy6i548f" path="res://classes/bullet.gd" id="1_ft5th"]
 [ext_resource type="Texture2D" uid="uid://dnhtbvyxfhwgd" path="res://assets/icons/silverlink.png" id="2_6if88"]
+[ext_resource type="Texture2D" uid="uid://cd23apfpn4ppe" path="res://assets/bullets/accordion_bullet.png" id="2_61lhb"]
 [ext_resource type="Texture2D" uid="uid://7731dbe0p3wt" path="res://assets/bullets/DINGBULLET.png" id="2_bv00w"]
 [ext_resource type="Texture2D" uid="uid://gfpfwpjor4uc" path="res://assets/bullets/gunbullet.png" id="3_6if88"]
+[ext_resource type="Texture2D" uid="uid://cq1hhrwyadm5j" path="res://assets/bullets/spray.png" id="5_h5rhw"]
+[ext_resource type="Texture2D" uid="uid://k6rkaps7u1xo" path="res://assets/bullets/slingshot_bullet.png" id="6_e0hdk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bv00w"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_61lhb")
+}],
+"loop": true,
+"name": &"accordion",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_bv00w")
@@ -30,6 +41,22 @@ animations = [{
 "loop": true,
 "name": &"gun",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_e0hdk")
+}],
+"loop": true,
+"name": &"slingshot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_h5rhw")
+}],
+"loop": true,
+"name": &"spray",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5rhw"]
@@ -40,7 +67,7 @@ script = ExtResource("1_ft5th")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bv00w")
-animation = &"black and white silver"
+animation = &"slingshot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h5rhw")

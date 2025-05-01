@@ -41,18 +41,45 @@ enum dam_type {
 }
 
 
-const possible_weapons = ["hand","gun", "sword", "mace",
+const possible_weapons = ["hand",
+"ruler","protractor","spray","pokestick","computer mouse","stem","torch","garlic","synth","slingshot","guitar",
+"accordion","door",
+
+"gun", "sword", "mace",
+
+"duck trigger",
+
 "black and white silver"]
 
 const weap_dict = {
-	#"name":[damage,knockback, ammo, type, hitsize,offset,shoot,swing,special]
-	"hand":[10,10,-1,[],Vector2(60,60),Vector2(0,-30),false,true,false,1.0],
+	#"name":[damage,knockback, ammo, type, hitsize,offset,shoot,swing,special,speed]
+	"hand":[2,10,-1,[],Vector2(60,60),Vector2(0,-30),false,true,false,1.0],
 	
-	"gun":[10,1,17,[dam_type.PIERCE],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
+	"ruler":[2,2,-1,[dam_type.SLASH],Vector2(60,180),Vector2(0,-60),false,true,false,0.5],
+	"protractor":[2,2,-1,[dam_type.BLUNT],Vector2(60,60),Vector2(0,-30),false,true,false,1.5],
+	"spray":[0,40,-1,[dam_type.ELEM],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
+	"pokestick":[2,20,-1,[dam_type.LIGHT,dam_type.PIERCE],Vector2(60,180),Vector2(0,-60),false,true,false,0.5],
+	"computer mouse":[4,2,-1,[dam_type.LIGHT,dam_type.BLUNT],Vector2(180,180),Vector2(0,-60),false,true,false,0.5],
+	"stem":[2,2,-1,[dam_type.BLUNT],Vector2(60,180),Vector2(0,-60),false,true,false,0.5],
+	"torch":[4,2,-1,[dam_type.ELEM],Vector2(60,180),Vector2(0,-60),false,true,false,0.6],
+	"garlic":[20,1,17,[dam_type.MENT, dam_type.LIGHT],Vector2(60,60),Vector2(0,-30),true,false,true,2.0],
+	"synth":[10,2,-1,[dam_type.MENT],Vector2(60,180),Vector2(0,-60),false,true,false,0.1],
+	"slingshot":[2,10,25,[dam_type.LIGHT,dam_type.BLUNT],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
+	"guitar":[2,2,-1,[dam_type.MENT,dam_type.SLASH],Vector2(60,180),Vector2(0,-60),false,true,false,0.5],
+	"accordion":[2,100,5,[dam_type.MENT,dam_type.BLUNT],Vector2(60,60),Vector2(0,-30),true,false,false,0.3],
+	"door":[20,2,-1,[dam_type.BLUNT,dam_type.HEAVY],Vector2(180,180),Vector2(0,-60),false,true,false,0.1],
+	
+	
+	
+	"gun":[10,10,17,[dam_type.PIERCE],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
 	"sword":[10,10,-1,[dam_type.SLASH],Vector2(60,180),Vector2(0,-60),false,true,false,0.5],
 	"mace":[10,100,-1,[dam_type.BLUNT],Vector2(60,180),Vector2(0,-60),false,true,false,0.2],
 	
-	"black and white silver":[50,1,30,[dam_type.PIERCE, dam_type.MENT],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
+	
+	"duck trigger":[0,1,17,[],Vector2(60,60),Vector2(0,-30),true,false,true,2.0],
+	
+	
+	"black and white silver":[50,10,30,[dam_type.PIERCE, dam_type.MENT],Vector2(60,60),Vector2(0,-30),true,false,true,2.0],
 }
 
 var shoot = false

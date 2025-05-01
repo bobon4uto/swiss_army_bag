@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://v64yll6nyrty"]
+[gd_scene load_steps=12 format=3 uid="uid://v64yll6nyrty"]
 
 [ext_resource type="Texture2D" uid="uid://cjo8n4igp6mce" path="res://assets/icons/settings.png" id="1_c6p4a"]
 [ext_resource type="Script" uid="uid://bujwgimhb3n45" path="res://classes/ui.gd" id="1_qbtsj"]
+[ext_resource type="Texture2D" uid="uid://dk3s1cpp1kqom" path="res://assets/Zickuza/face/talk.png" id="2_hyijr"]
 [ext_resource type="Texture2D" uid="uid://dfo30yp6lphj0" path="res://assets/weapons/mace/mace.png" id="3_hyijr"]
 [ext_resource type="SpriteFrames" uid="uid://03odwykshfxl" path="res://classes/weapon.tres" id="4_hyijr"]
 
@@ -35,6 +36,17 @@ ProgressBar/styles/background = SubResource("StyleBoxFlat_c6p4a")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_qbtsj")
 RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
 RichTextLabel/styles/background = SubResource("StyleBoxFlat_hyijr")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tsmym"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hyijr")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -72,10 +84,12 @@ size_flags_vertical = 3
 layout_mode = 2
 stretch_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="lt/HBoxContainer/VBoxContainer/Zickuza panel/AspectRatioContainer"]
-layout_mode = 2
-texture = ExtResource("1_c6p4a")
-stretch_mode = 5
+[node name="head" type="AnimatedSprite2D" parent="lt/HBoxContainer/VBoxContainer/Zickuza panel/AspectRatioContainer"]
+position = Vector2(0, 7)
+scale = Vector2(0.782876, 0.782876)
+sprite_frames = SubResource("SpriteFrames_tsmym")
+animation = &"talk"
+centered = false
 
 [node name="healthbar" type="ProgressBar" parent="lt/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -136,3 +150,27 @@ stretch_mode = 5
 sprite_frames = ExtResource("4_hyijr")
 animation = &"hand"
 centered = false
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.835
+anchor_right = 0.355
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 8.0
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -68.0
+offset_top = -136.0
+offset_right = 68.0
+grow_horizontal = 2
+grow_vertical = 0
+icon = ExtResource("1_c6p4a")

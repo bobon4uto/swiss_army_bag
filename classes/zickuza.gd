@@ -4,6 +4,8 @@ class_name player
 signal retry
 
 const SPEED = 500
+var duck_mode = false
+@onready var duck_timer : Timer =$DuckTimer
 @onready var anim : AnimationTree =$AnimationTree
 @onready var sprite : AnimatedSprite2D = $BodySprite
 @onready var center = $actual_center
@@ -32,14 +34,22 @@ var shot_landed = false
 var retrying:bool=false
 const MAX_HELTH = 100
 var bulleting = false
-
+var booming = false
 
 
 const comm = {
-	#"name":[damage,knockback type, hitsize,offset,shoot,swing,special]
+	#"name":"commentary"
+	"ruler":"Let's meusure the damage.",
+	"spray":"its not holy water, so it's useless.",
+	"garlic":"Yummy!",
+	"computer mouse":"A relic of the past.",
+	
+	
 	"hand":"I'm not as commited as my teacher - George, but I can punch some faces.",
 	"gun":"When mana runs out, I use bullets.",
 	"sword":"Honestly, I dont get why they're so popular...",
+	
+	
 	"duck trigger":"IT'S TIME TO PULL MY DUCK TRIGGER!"
 }
 
@@ -51,12 +61,18 @@ func _ready():
 	anim.set("parameters/TimeScale/scale",weap.animation_speed)
 	health.max_value = MAX_HELTH
 	health.value = MAX_HELTH
+	available_weapons = weapon.possible_weapons.size()-1
 
 func _physics_process(_delta: float) -> void:
 	velocity = handle_input() * SPEED
 	
 	#anim.set("parameters/AnimationNodeStateMachine/swingspace/blend_position",facing_dir)
 	anim.set("parameters/AnimationNodeStateMachine/idlespace/blend_position",facing_dir.x)
+	
+	if duck_timer.get_time_left()>0:
+		UIammo.text = "time left = "+"%.2f" % duck_timer.get_time_left()
+
+	
 	move_and_slide()
 
 func get_motion() -> Vector2:
@@ -123,13 +139,23 @@ func handle_input() -> Vector2:
 		anim.set("parameters/TimeScale/scale",weap.animation_speed)
 	
 	if facing_dir.x>0:
-		if !sprite.animation.contains("ZickuzaR"):
-			sprite.play("ZickuzaR")
-		hand.z_index=-1
+		if duck_mode:
+			if !sprite.animation.contains("duckR"):
+				sprite.play("duckR")
+			hand.z_index=-1
+		else:
+			if !sprite.animation.contains("ZickuzaR"):
+				sprite.play("ZickuzaR")
+			hand.z_index=-1
 	else:
-		if !sprite.animation.contains("ZickuzaL"):
-			sprite.play("ZickuzaL")
-		hand.z_index=1
+		if duck_mode:
+			if !sprite.animation.contains("duckL"):
+				sprite.play("duckL")
+			hand.z_index=1
+		else:
+			if !sprite.animation.contains("ZickuzaL"):
+				sprite.play("ZickuzaL")
+			hand.z_index=1
 	bored = (!attacking) and facing_dir==Vector2.ZERO
 	
 	
@@ -138,10 +164,14 @@ func handle_input() -> Vector2:
 func set_weapon_in_hand(id):
 	weap.set_weapon(id)
 	wlabel.text = weap.wname 
-	comment.text = "it's a "+weap.wname + "."
+	if duck_mode:
+		pass
+	else:
+		comment.text = "it's a "+weap.wname + "."
+		
+		if comm.has(weap.wname):
+			comment.text = comm[weap.wname]
 	
-	if comm.has(weap.wname):
-		comment.text = comm[weap.wname]
 	UIweap.play(weap.wname)
 	splspr.play(weap.wname)
 	spl.play("spl")
@@ -171,6 +201,8 @@ func centre_look_at(pos:Vector2):
 
 
 func handle_hit(damage):
+	if duck_mode:
+		return
 	health.value-=damage
 	if health.value<1.0:
 		restart()
@@ -180,7 +212,7 @@ func restart():
 	position=checkpoint
 	health.value=MAX_HELTH
 	set_weapon_in_hand(0)
-	var variant = randi()%3
+	var variant = randi()%5
 	match (variant):
 		0:
 			comment.text = "Oops, I died, silly me! What? Why am I alive again? Nanoma- I,m kidding, company secret."
@@ -192,16 +224,16 @@ func restart():
 			comment.text = "I died. I feel like I'm in a hard videogame..."
 		4:
 			comment.text = "I died. Don't worry, I won't become undead."
+		4:
+			comment.text = "I died. But I survived!"
 
 
 	retrying = true
 
-func _on_bullet_body_entered(body: Node2D) -> void:
-	if !shot_landed: 
-		if body is enemy:
-			body.handle_hit(weap.damage,weap.knockback,weap.dam_tip)
-		shot_landed=true
-		%bullet.visible = false
+
+
+
+
 func set_bvisf():
 	%bullet.visible = false
 func set_bvist():
@@ -222,23 +254,45 @@ func on_bullet_hit(body):
 		body.handle_hit(weap.damage,weap.knockback,weap.dam_tip)
 
 func call_swing():
-	swingaudio.play()
+	if weap.special:
+		if weap.wname.contains("garlic"):
+			attacking=false
+	else:
+		swingaudio.play()
+	
 
 func shoot_bullet():
-	if (weap.ammo > 0):
-		weap.ammo-=1
-		if weap.ammo > 0:
-			UIammo.text = "Uses left : "+ str(weap.ammo)
-		else:
-			UIammo.text = ""
+	if weap.swing:
+		return
+	if (weap.ammo != 0):
+		if !duck_mode:
+			weap.ammo-=1
+			if weap.ammo > 0:
+				UIammo.text = "Uses left : "+ str(weap.ammo)
+			else:
+				UIammo.text = ""
 	else:
 		set_weapon_in_hand(0)
 		return
 	var new_bullet = preload("res://classes/bullet.tscn").instantiate()
 	
 	if weap.special:
-		if weap.name.contains("black and white silver"):
+		if weap.wname.contains( "black and white silver"):
+			if weap.ammo <1:
+				ding.pitch_scale = 0.5
+				ding.stream.random_pitch = 1.0
+			else: 
+				ding.pitch_scale = 1.2
+				ding.stream.random_pitch = 1.2
 			ding.play()
+		elif weap.wname.contains("garlic"):
+			boom()
+			set_weapon_in_hand(0)
+			return
+		elif weap.wname.contains("duck trigger"):
+			pull_my_duck_trigger()
+			set_weapon_in_hand(0)
+			return
 		else:
 			shootaudio.play()
 	else:
@@ -251,7 +305,26 @@ func shoot_bullet():
 	new_bullet.position = position
 	new_bullet.speed = weap.animation_speed * 1000
 	new_bullet.wname=weap.wname
-	new_bullet.hitnum=int(floor( weap.knockback))
-	new_bullet.scale = Vector2.ONE* weap.knockback/4
+	new_bullet.hitnum=int(floor( weap.knockback/10))
+	new_bullet.scale = Vector2.ONE* weap.knockback/40
 	new_bullet.connect("body_entered",on_bullet_hit)
 	get_parent().add_child(new_bullet)
+
+
+func boom():
+	var new_boom = preload("res://scenes/garlicboom.tscn").instantiate()
+	attacking=false
+	for body in  %booms.get_overlapping_bodies():
+		if body is enemy:
+			body.handle_hit(weap.damage,weap.knockback,weap.dam_tip)
+	
+	$boom.play()
+	add_child(new_boom)
+
+func pull_my_duck_trigger():
+	duck_mode = true
+	duck_timer.start(15.0)
+
+func _on_duck_timer_timeout() -> void:
+	duck_mode = false
+	comment.text = "It was fun while it lasted."
