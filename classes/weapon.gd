@@ -45,10 +45,13 @@ const possible_weapons = ["hand",
 "ruler","protractor","spray","pokestick","computer mouse","stem","torch","garlic","synth","slingshot","guitar",
 "accordion","door",
 
-"gun", "sword", "mace",
+"gun", "sword", "mace","bow","bo wand","water scroll","fire scroll","wind scroll","earth scroll","phone","pike","brass knuckles",
 
+"chainsaw","plazma sword","witch hunter","white nights","fire whip","keg","great greatsword",
 "duck trigger",
 
+"ancient scroll","merks",
+"null dereference",
 "black and white silver"]
 
 const weap_dict = {
@@ -70,14 +73,34 @@ const weap_dict = {
 	"door":[20,2,-1,[dam_type.BLUNT,dam_type.HEAVY],Vector2(180,180),Vector2(0,-60),false,true,false,0.1],
 	
 	
-	
 	"gun":[10,10,17,[dam_type.PIERCE],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
 	"sword":[10,10,-1,[dam_type.SLASH],Vector2(60,180),Vector2(0,-60),false,true,false,0.5],
 	"mace":[10,100,-1,[dam_type.BLUNT],Vector2(60,180),Vector2(0,-60),false,true,false,0.2],
+	"bow":[30,30,50,[dam_type.PIERCE],Vector2(60,60),Vector2(0,-30),true,false,false,0.5],
+	"bo wand":[10,100,-1,[dam_type.BLUNT, dam_type.LIGHT],Vector2(500,20),Vector2(0,-10),false,true,false,0.5],
+	"water scroll":[10,20,10,[dam_type.ELEM, dam_type.LIGHT],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
+	"fire scroll":[20,5,10,[dam_type.ELEM, dam_type.LIGHT],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
+	"wind scroll":[10,200,10,[dam_type.ELEM, dam_type.LIGHT],Vector2(60,60),Vector2(0,-30),true,false,false,0.2],
+	"earth scroll":[40,50,10,[dam_type.ELEM, dam_type.LIGHT],Vector2(60,60),Vector2(0,-30),true,false,false,0.1],
+	"phone":[10,50,15,[dam_type.MENT, dam_type.LIGHT],Vector2(60,60),Vector2(0,-30),true,false,false,0.5],
+	"pike":[15,50,-1,[dam_type.PIERCE],Vector2(60,410),Vector2(0,-120),false,true,false,0.5],
+	"brass knuckles":[20,10,-1,[dam_type.BLUNT],Vector2(60,60),Vector2(0,-30),false,true,false,1.0],
 	
 	
+
+	"chainsaw":[2,2,-1,[dam_type.SLASH],Vector2(100,270),Vector2(0,-150),false,true,false,0.5],
+	"plazma sword":[2,2,-1,[dam_type.SLASH],Vector2(25,320),Vector2(0,-160),false,true,false,0.5],
+	"witch hunter":[30,50,17,[dam_type.PIERCE, dam_type.MENT],Vector2(60,60),Vector2(0,-30),true,false,false,1.0],
+	"white nights":[40,10,17,[dam_type.PIERCE, dam_type.LIGHT],Vector2(25,480),Vector2(0,-80),true,false,false,2.0],
+	"fire whip":[2,2,-1,[dam_type.SLASH],Vector2(110,100),Vector2(15,-250),false,true,false,0.5],
+	"keg":[20,1,17,[dam_type.BLUNT,dam_type.HEAVY],Vector2(60,60),Vector2(0,-30),true,false,true,2.0],
+	"great greatsword":[10,10,-1,[dam_type.SLASH],Vector2(140,1000),Vector2(0,-500),false,true,false,1.0],
 	"duck trigger":[0,1,17,[],Vector2(60,60),Vector2(0,-30),true,false,true,2.0],
 	
+	
+	"ancient scroll":[10,100,-1,[dam_type.BLUNT, dam_type.ELEM],Vector2(500,20),Vector2(0,-10),false,true,false,0.5],
+	"merks":[10,10,-1,[dam_type.BLUNT, dam_type.ELEM],Vector2(140,1000),Vector2(0,-500),false,true,false,1.0],
+	"null dereference":[200,1,17,[dam_type.MENT,dam_type.HEAVY],Vector2(60,60),Vector2(0,-30),true,false,true,2.0],
 	
 	"black and white silver":[50,10,30,[dam_type.PIERCE, dam_type.MENT],Vector2(60,60),Vector2(0,-30),true,false,true,2.0],
 }

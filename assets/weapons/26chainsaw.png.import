@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgyb5li287oop"
-path="res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"
+uid="uid://b1he5s6f8cyhw"
+path="res://.godot/imported/26chainsaw.png-12bde5990516686c4122d205701773bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/attackCircle.png"
-dest_files=["res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"]
+source_file="res://assets/weapons/26chainsaw.png"
+dest_files=["res://.godot/imported/26chainsaw.png-12bde5990516686c4122d205701773bc.ctex"]
 
 [params]
 

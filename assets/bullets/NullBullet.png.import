@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgyb5li287oop"
-path="res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"
+uid="uid://ib0qg67qgixm"
+path="res://.godot/imported/NullBullet.png-a3c4a8e84cac94a6ca4ea2e4ad8b7e35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/attackCircle.png"
-dest_files=["res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"]
+source_file="res://assets/bullets/NullBullet.png"
+dest_files=["res://.godot/imported/NullBullet.png-a3c4a8e84cac94a6ca4ea2e4ad8b7e35.ctex"]
 
 [params]
 

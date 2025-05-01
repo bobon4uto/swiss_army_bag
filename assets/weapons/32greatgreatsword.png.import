@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgyb5li287oop"
-path="res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"
+uid="uid://b858cgr4xrulf"
+path="res://.godot/imported/32greatgreatsword.png-cb48d1f5f8b3016e327f95ba485b31a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/attackCircle.png"
-dest_files=["res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"]
+source_file="res://assets/weapons/32greatgreatsword.png"
+dest_files=["res://.godot/imported/32greatgreatsword.png-cb48d1f5f8b3016e327f95ba485b31a1.ctex"]
 
 [params]
 

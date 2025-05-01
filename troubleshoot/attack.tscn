@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyoxa3u13dygp"]
+
+[ext_resource type="Texture2D" uid="uid://bgyb5li287oop" path="res://assets/enemies/attackCircle.png" id="1_hy2ll"]
+
+[node name="attack" type="Sprite2D"]
+texture = ExtResource("1_hy2ll")

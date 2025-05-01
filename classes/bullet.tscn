@@ -1,12 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://c66so47opcdtr"]
+[gd_scene load_steps=19 format=3 uid="uid://c66so47opcdtr"]
 
 [ext_resource type="Script" uid="uid://c5vg3cy6i548f" path="res://classes/bullet.gd" id="1_ft5th"]
 [ext_resource type="Texture2D" uid="uid://dnhtbvyxfhwgd" path="res://assets/icons/silverlink.png" id="2_6if88"]
 [ext_resource type="Texture2D" uid="uid://cd23apfpn4ppe" path="res://assets/bullets/accordion_bullet.png" id="2_61lhb"]
 [ext_resource type="Texture2D" uid="uid://7731dbe0p3wt" path="res://assets/bullets/DINGBULLET.png" id="2_bv00w"]
 [ext_resource type="Texture2D" uid="uid://gfpfwpjor4uc" path="res://assets/bullets/gunbullet.png" id="3_6if88"]
+[ext_resource type="Texture2D" uid="uid://4qx0dhd60hwy" path="res://assets/bullets/arrow.png" id="4_evhb6"]
 [ext_resource type="Texture2D" uid="uid://cq1hhrwyadm5j" path="res://assets/bullets/spray.png" id="5_h5rhw"]
 [ext_resource type="Texture2D" uid="uid://k6rkaps7u1xo" path="res://assets/bullets/slingshot_bullet.png" id="6_e0hdk"]
+[ext_resource type="Texture2D" uid="uid://brfq87ln150gt" path="res://assets/bullets/earth.png" id="6_tshde"]
+[ext_resource type="Texture2D" uid="uid://ri1w24i7fl01" path="res://assets/bullets/fire.png" id="7_yiwll"]
+[ext_resource type="Texture2D" uid="uid://ib0qg67qgixm" path="res://assets/bullets/NullBullet.png" id="9_4yfuw"]
+[ext_resource type="Texture2D" uid="uid://bk5oge5ih1pi" path="res://assets/bullets/phonebullet.png" id="9_hpqjy"]
+[ext_resource type="Texture2D" uid="uid://06gc48wwv8uj" path="res://assets/bullets/water.png" id="12_4yfuw"]
+[ext_resource type="Texture2D" uid="uid://ctre58mru1w0l" path="res://assets/bullets/wind.png" id="13_2wlrv"]
+[ext_resource type="Texture2D" uid="uid://dkusx4umwly4w" path="res://assets/bullets/whitenightbullet.png" id="13_yiwll"]
+[ext_resource type="Texture2D" uid="uid://c1thamvvh7785" path="res://assets/bullets/witchhunterbullet.png" id="15_hpqjy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bv00w"]
 animations = [{
@@ -28,6 +37,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_evhb6")
+}],
+"loop": true,
+"name": &"bow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_6if88")
 }],
 "loop": true,
@@ -36,10 +53,42 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_tshde")
+}],
+"loop": true,
+"name": &"earth scroll",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_yiwll")
+}],
+"loop": true,
+"name": &"fire scroll",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_6if88")
 }],
 "loop": true,
 "name": &"gun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_4yfuw")
+}],
+"loop": true,
+"name": &"null dereference",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_hpqjy")
+}],
+"loop": true,
+"name": &"phone",
 "speed": 5.0
 }, {
 "frames": [{
@@ -57,6 +106,38 @@ animations = [{
 "loop": true,
 "name": &"spray",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_4yfuw")
+}],
+"loop": true,
+"name": &"water scroll",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_yiwll")
+}],
+"loop": true,
+"name": &"white nights",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_2wlrv")
+}],
+"loop": true,
+"name": &"wind scroll",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_hpqjy")
+}],
+"loop": true,
+"name": &"witch hunter",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5rhw"]
@@ -67,7 +148,7 @@ script = ExtResource("1_ft5th")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bv00w")
-animation = &"slingshot"
+animation = &"null dereference"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h5rhw")

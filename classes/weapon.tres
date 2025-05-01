@@ -1,24 +1,43 @@
-[gd_resource type="SpriteFrames" load_steps=20 format=3 uid="uid://03odwykshfxl"]
+[gd_resource type="SpriteFrames" load_steps=39 format=3 uid="uid://03odwykshfxl"]
 
 [ext_resource type="Texture2D" uid="uid://dvrwlwkdhsigx" path="res://assets/weapons/gun/gun.png" id="1_55aur"]
 [ext_resource type="Texture2D" uid="uid://b8lga16uk4fae" path="res://assets/weapons/DINGDINGPISTOLS.png" id="1_73gro"]
 [ext_resource type="Texture2D" uid="uid://buls7oplnh7eo" path="res://assets/weapons/12accardion.png" id="1_jxjt0"]
 [ext_resource type="Texture2D" uid="uid://duy0ccq1gqpgb" path="res://assets/weapons/hand.png" id="2_73gro"]
 [ext_resource type="Texture2D" uid="uid://dfo30yp6lphj0" path="res://assets/weapons/mace/mace.png" id="2_cvjb1"]
+[ext_resource type="Texture2D" uid="uid://c238xv1h4e31n" path="res://assets/weapons/34ancientscroll.png" id="2_i3uwn"]
 [ext_resource type="Texture2D" uid="uid://bru5x3ufqdkwk" path="res://assets/weapons/5computermouse.png" id="2_prxl5"]
 [ext_resource type="Texture2D" uid="uid://cvww11i47wohe" path="res://assets/weapons/sword/sword.png" id="3_73gro"]
 [ext_resource type="Texture2D" uid="uid://bvsl5g7k1budc" path="res://assets/Zickuza/duck_trigger.png" id="3_icf38"]
+[ext_resource type="Texture2D" uid="uid://cybh14aodrbe5" path="res://assets/weapons/17bow.png" id="3_y7bh3"]
 [ext_resource type="Texture2D" uid="uid://b2emnc1bpss2q" path="res://assets/weapons/8garlic.png" id="3_yce0l"]
+[ext_resource type="Texture2D" uid="uid://bc4ha2rarfuqb" path="res://assets/weapons/18bowand.png" id="4_n5t3k"]
 [ext_resource type="Texture2D" uid="uid://086rg16fvl2t" path="res://assets/weapons/13door.png" id="4_syfo0"]
+[ext_resource type="Texture2D" uid="uid://dfhe0gt0fyhxi" path="res://assets/weapons/25brassknuckles.png" id="5_5bran"]
 [ext_resource type="Texture2D" uid="uid://bguqifp8wvn0" path="res://assets/weapons/11guitar.png" id="5_7bq5h"]
 [ext_resource type="Texture2D" uid="uid://bfqgv7blvvre6" path="res://assets/weapons/2protractor.png" id="5_c7m35"]
 [ext_resource type="Texture2D" uid="uid://hd3kqr0b1drh" path="res://assets/weapons/4pokestick.png" id="5_ncter"]
 [ext_resource type="Texture2D" uid="uid://c2owffkcbje72" path="res://assets/weapons/1ruler.png" id="5_rlsmd"]
+[ext_resource type="Texture2D" uid="uid://b1he5s6f8cyhw" path="res://assets/weapons/26chainsaw.png" id="6_pne42"]
 [ext_resource type="Texture2D" uid="uid://bcmicy287iww0" path="res://assets/weapons/3spray.png" id="7_af7i8"]
+[ext_resource type="Texture2D" uid="uid://b5k7purfn7lp6" path="res://assets/weapons/22eartthscroll.png" id="8_n4fr4"]
+[ext_resource type="Texture2D" uid="uid://u54c78vkrkpo" path="res://assets/weapons/20firescroll.png" id="9_sqqdw"]
 [ext_resource type="Texture2D" uid="uid://d2yftsaqm6ajj" path="res://assets/weapons/6stem.png" id="10_rmanw"]
 [ext_resource type="Texture2D" uid="uid://dfplja0bgg655" path="res://assets/weapons/10slingshot.png" id="11_oq6ws"]
+[ext_resource type="Texture2D" uid="uid://ch6y5qfoaawq5" path="res://assets/weapons/30firewhip.png" id="12_negi2"]
 [ext_resource type="Texture2D" uid="uid://cmmvah7peyxr1" path="res://assets/weapons/7torch.png" id="12_yce0l"]
+[ext_resource type="Texture2D" uid="uid://b858cgr4xrulf" path="res://assets/weapons/32greatgreatsword.png" id="14_kw23l"]
 [ext_resource type="Texture2D" uid="uid://cdwrpajkbwg4k" path="res://assets/weapons/9synth.png" id="14_nefkd"]
+[ext_resource type="Texture2D" uid="uid://do7553ia5e0u3" path="res://assets/weapons/23phone.png" id="15_sqqdw"]
+[ext_resource type="Texture2D" uid="uid://gcnk454nd7rp" path="res://assets/weapons/24longlongpike.png" id="16_yfqvb"]
+[ext_resource type="Texture2D" uid="uid://c5745egfbf7lc" path="res://assets/weapons/31kega.png" id="17_2xddl"]
+[ext_resource type="Texture2D" uid="uid://cvs63ubxiyyiw" path="res://assets/weapons/27plazmasword.png" id="19_vaiib"]
+[ext_resource type="Texture2D" uid="uid://xkwyymgu5tlw" path="res://assets/weapons/36nulldereference.png" id="20_xj10w"]
+[ext_resource type="Texture2D" uid="uid://ds0e7yljp13lh" path="res://assets/weapons/35merki.png" id="21_cd3g4"]
+[ext_resource type="Texture2D" uid="uid://cuqr7pojeur1s" path="res://assets/weapons/19waterscroll.png" id="24_yfqvb"]
+[ext_resource type="Texture2D" uid="uid://bvrvc6j5m6puu" path="res://assets/weapons/21windscroll.png" id="25_5bran"]
+[ext_resource type="Texture2D" uid="uid://du07hwr01ilwy" path="res://assets/weapons/29whitenights.png" id="30_5biph"]
+[ext_resource type="Texture2D" uid="uid://bef5btomi6ex6" path="res://assets/weapons/28correctwitchhunter.png" id="35_kw23l"]
 
 [resource]
 animations = [{
@@ -32,10 +51,50 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_i3uwn")
+}],
+"loop": true,
+"name": &"ancient scroll",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_73gro")
 }],
 "loop": true,
 "name": &"black and white silver",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n5t3k")
+}],
+"loop": true,
+"name": &"bo wand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y7bh3")
+}],
+"loop": true,
+"name": &"bow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5bran")
+}],
+"loop": true,
+"name": &"brass knuckles",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_pne42")
+}],
+"loop": true,
+"name": &"chainsaw",
 "speed": 5.0
 }, {
 "frames": [{
@@ -64,10 +123,42 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("8_n4fr4")
+}],
+"loop": true,
+"name": &"earth scroll",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_sqqdw")
+}],
+"loop": true,
+"name": &"fire scroll",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_negi2")
+}],
+"loop": true,
+"name": &"fire whip",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_yce0l")
 }],
 "loop": true,
 "name": &"garlic",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_kw23l")
+}],
+"loop": true,
+"name": &"great greatsword",
 "speed": 5.0
 }, {
 "frames": [{
@@ -96,10 +187,58 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("17_2xddl")
+}],
+"loop": true,
+"name": &"keg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_cvjb1")
 }],
 "loop": true,
 "name": &"mace",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_cd3g4")
+}],
+"loop": true,
+"name": &"merks",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_xj10w")
+}],
+"loop": true,
+"name": &"null dereference",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_sqqdw")
+}],
+"loop": true,
+"name": &"phone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_yfqvb")
+}],
+"loop": true,
+"name": &"pike",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_vaiib")
+}],
+"loop": true,
+"name": &"plazma sword",
 "speed": 5.0
 }, {
 "frames": [{
@@ -172,5 +311,37 @@ animations = [{
 }],
 "loop": true,
 "name": &"torch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_yfqvb")
+}],
+"loop": true,
+"name": &"water scroll",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_5biph")
+}],
+"loop": true,
+"name": &"white nights",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_5bran")
+}],
+"loop": true,
+"name": &"wind scroll",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_kw23l")
+}],
+"loop": true,
+"name": &"witch hunter",
 "speed": 5.0
 }]

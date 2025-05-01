@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://v64yll6nyrty" path="res://classes/ui.tscn" id="5_71j4m"]
 [ext_resource type="Script" uid="uid://d3iv5h8cp5ati" path="res://scenes/triggers.gd" id="6_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://bdfg1qbv7ixtr" path="res://classes/spawn_enemies.tscn" id="6_i7141"]
-[ext_resource type="PackedScene" uid="uid://bgapcgm8jf2gu" path="res://classes/zondbie.tscn" id="8_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://bgapcgm8jf2gu" path="res://classes/zondbie.tscn" id="9_7r4gi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0juu"]
 size = Vector2(128, 128)
@@ -422,8 +422,8 @@ position = Vector2(-1091, 456)
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("5_71j4m")]
 
-[node name="zondbie" parent="." instance=ExtResource("8_7r4gi")]
-position = Vector2(-1330, -73)
+[node name="zondbie" parent="." instance=ExtResource("9_7r4gi")]
+position = Vector2(-1159, 33)
 
 [connection signal="retry" from="Zickuza" to="." method="_on_zickuza_retry"]
 [connection signal="lines_edited_from" from="CanvasLayer/UI/TextEdit" to="." method="_on_text_edit_lines_edited_from"]

@@ -49,6 +49,7 @@ const comm = {
 	"gun":"When mana runs out, I use bullets.",
 	"sword":"Honestly, I dont get why they're so popular...",
 	
+	"brass knucles":"They're not actually brass.",
 	
 	"duck trigger":"IT'S TIME TO PULL MY DUCK TRIGGER!"
 }
@@ -255,7 +256,7 @@ func on_bullet_hit(body):
 
 func call_swing():
 	if weap.special:
-		if weap.wname.contains("garlic"):
+		if weap.wname.contains("garlic") or weap.wname.contains("keg"):
 			attacking=false
 	else:
 		swingaudio.play()
@@ -286,7 +287,11 @@ func shoot_bullet():
 				ding.stream.random_pitch = 1.2
 			ding.play()
 		elif weap.wname.contains("garlic"):
-			boom()
+			boom("garlic")
+			set_weapon_in_hand(0)
+			return
+		elif weap.wname.contains("keg"):
+			boom("keg")
 			set_weapon_in_hand(0)
 			return
 		elif weap.wname.contains("duck trigger"):
@@ -311,8 +316,14 @@ func shoot_bullet():
 	get_parent().add_child(new_bullet)
 
 
-func boom():
-	var new_boom = preload("res://scenes/garlicboom.tscn").instantiate()
+func boom(n :String):
+	var new_boom
+	if  n.contains("garlic"):
+		new_boom=preload("res://scenes/garlicboom.tscn").instantiate()
+	elif n.contains("keg"):
+		new_boom=preload("res://scenes/kegaboom.tscn").instantiate()
+	else:
+		return
 	attacking=false
 	for body in  %booms.get_overlapping_bodies():
 		if body is enemy:

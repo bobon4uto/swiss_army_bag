@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgyb5li287oop"
-path="res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"
+uid="uid://bvrvc6j5m6puu"
+path="res://.godot/imported/21windscroll.png-a2e8c225b12b36b5161302325cdd0b96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/attackCircle.png"
-dest_files=["res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"]
+source_file="res://assets/weapons/21windscroll.png"
+dest_files=["res://.godot/imported/21windscroll.png-a2e8c225b12b36b5161302325cdd0b96.ctex"]
 
 [params]
 

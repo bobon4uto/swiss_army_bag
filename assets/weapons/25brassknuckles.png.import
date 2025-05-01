@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgyb5li287oop"
-path="res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"
+uid="uid://dfhe0gt0fyhxi"
+path="res://.godot/imported/25brassknuckles.png-8197a20b18d8b211a8714d8706a6176c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/attackCircle.png"
-dest_files=["res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"]
+source_file="res://assets/weapons/25brassknuckles.png"
+dest_files=["res://.godot/imported/25brassknuckles.png-8197a20b18d8b211a8714d8706a6176c.ctex"]
 
 [params]
 

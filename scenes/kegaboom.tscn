@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c34k67v862dl6"]
+
+[ext_resource type="Texture2D" uid="uid://c5745egfbf7lc" path="res://assets/weapons/31kega.png" id="1_51col"]
+[ext_resource type="Script" uid="uid://cpb8plc4g4pl2" path="res://scenes/kegaboom.gd" id="2_1l1f5"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yccjs"]
+particle_flag_disable_z = true
+angle_min = -473.1
+angle_max = 720.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 711.95
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 98, 0)
+
+[node name="kegaboom" type="GPUParticles2D"]
+emitting = false
+texture = ExtResource("1_51col")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_yccjs")
+script = ExtResource("2_1l1f5")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

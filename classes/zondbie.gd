@@ -7,8 +7,8 @@ class_name enemy
 @export var max_health = 100
 @export var damage = 10
 
-var effective :Array= []
-var ineffective :Array= []
+var effective :Array= [0]
+var ineffective :Array= [0]
 var start_pos = Vector2.ZERO
 @export var stage : int = 2
 @onready var body_sprite = $body
@@ -16,18 +16,17 @@ var start_pos = Vector2.ZERO
 @onready var weap_sprite = $weapoff
 @onready var hat_sprite = $hat
 @onready var att_sprite = $attack
-@onready var htbx = $hurtbox/hitbox
+@onready var htbx = $hitbox
 @onready var health = $health
 @onready var timer = $Timer
-@onready var view = $hurtbox/wiew
-@onready var hurtaudio : AudioStreamPlayer2D =$hurt
-@onready var s : AudioStreamPlaybackInteractive 
+@onready var view = $view
+@onready var hurts = $hurts
 var dead = false
 
 
 func _ready():
 	generate()
-	s = hurtaudio.get_stream_playback()
+	
 	
 	#collision_layer=0
 	collision_mask=2
@@ -35,6 +34,7 @@ func _ready():
 
 func rescale(vscale):
 	for child in get_children():
+		pass
 		if child.has_method("set_scale"):
 			child.set_scale(vscale)
 		
@@ -96,7 +96,7 @@ func handle_hit(damagen, knockback, dam_types:Array):
 	
 
 	for type in dam_types:
-		s.switch_to_clip(type)
+		hurts.get_child(type).play()
 		for etype in effective:
 			if type == etype:
 				type_multi*=2
@@ -126,6 +126,7 @@ func playdead():
 	head_sprite.play("dead")
 	weap_sprite.play("dead")
 	hat_sprite.play("dead")
+	att_sprite.visible=false
 
 func _on_hitbox_body_exited(_body: Node2D) -> void:
 	if dead:

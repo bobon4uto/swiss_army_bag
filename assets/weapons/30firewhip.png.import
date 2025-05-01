@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgyb5li287oop"
-path="res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"
+uid="uid://ch6y5qfoaawq5"
+path="res://.godot/imported/30firewhip.png-266d6fe79c30df95e6c1d2ce8f70834d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/attackCircle.png"
-dest_files=["res://.godot/imported/attackCircle.png-35dc24029d486cae5a5340127f01ba81.ctex"]
+source_file="res://assets/weapons/30firewhip.png"
+dest_files=["res://.godot/imported/30firewhip.png-266d6fe79c30df95e6c1d2ce8f70834d.ctex"]
 
 [params]
 
