@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxgy67qobtvlp"]
+[gd_scene load_steps=20 format=3 uid="uid://cxgy67qobtvlp"]
 
 [ext_resource type="Script" uid="uid://d00yfv0bvuj4r" path="res://scenes/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dw46v0cfvd7y8" path="res://classes/zickuza.tscn" id="1_rwgxs"]
@@ -6,14 +6,39 @@
 [ext_resource type="Texture2D" uid="uid://cshm5h3o0ypj5" path="res://assets/icons/THETOURMENTNEXUS.png" id="2_k0juu"]
 [ext_resource type="PackedScene" uid="uid://chpkkugr3udhh" path="res://classes/door.tscn" id="4_qfnet"]
 [ext_resource type="PackedScene" uid="uid://v64yll6nyrty" path="res://classes/ui.tscn" id="5_71j4m"]
+[ext_resource type="Texture2D" uid="uid://baix2htvptadb" path="res://assets/level/passing.png" id="5_q5onr"]
 [ext_resource type="Script" uid="uid://d3iv5h8cp5ati" path="res://scenes/triggers.gd" id="6_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://bdfg1qbv7ixtr" path="res://classes/spawn_enemies.tscn" id="6_i7141"]
+[ext_resource type="Texture2D" uid="uid://b5gm1gnoxn8ml" path="res://assets/instruction/instructions1.jpg" id="9_e3hyu"]
+[ext_resource type="Texture2D" uid="uid://b8eg1tw7shopk" path="res://assets/instruction/instructions2.jpg" id="10_q5onr"]
+[ext_resource type="Texture2D" uid="uid://dk8rnkgocy1hv" path="res://assets/instruction/instructions4.jpg" id="11_jhx03"]
+[ext_resource type="Texture2D" uid="uid://xp33yek3r4v0" path="res://assets/level/vampire.png" id="13_o8fc1"]
+[ext_resource type="Texture2D" uid="uid://v22ptja0mdjy" path="res://assets/level/finish.png" id="14_xo05s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5onr"]
+size = Vector2(262, 652)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0juu"]
 size = Vector2(128, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8fc1"]
+size = Vector2(112.445, 51.1128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo05s"]
+size = Vector2(115.215, 52.9417)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dss4m"]
+size = Vector2(115.325, 52.0475)
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_k0juu")
+
+[node name="cutscenestarter" type="Area2D" parent="."]
+position = Vector2(21741, -46)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cutscenestarter"]
+position = Vector2(-467, -57)
+shape = SubResource("RectangleShape2D_q5onr")
 
 [node name="grass" type="Polygon2D" parent="."]
 z_index = -10
@@ -54,7 +79,7 @@ metadata/_edit_lock_ = true
 z_index = -10
 position = Vector2(33473, -182)
 color = Color(0.128358, 0.175107, 0.00645238, 1)
-polygon = PackedVector2Array(-15882, 6759, -11252, 7308, -11102, -5388, -15783, -5438)
+polygon = PackedVector2Array(-15882, 6759, -9240, 7298, -9268, -5517, -15783, -5438)
 metadata/_edit_lock_ = true
 
 [node name="obstcles" type="Node2D" parent="."]
@@ -70,6 +95,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="shape" type="CollisionShape2D" parent="obstcles/Icon/bottom"]
+position = Vector2(-0.0666667, 0)
 shape = SubResource("RectangleShape2D_k0juu")
 
 [node name="Icon2" type="Sprite2D" parent="obstcles"]
@@ -119,7 +145,7 @@ scale = Vector2(5.90339, 6.81554)
 [node name="Icon6" type="Sprite2D" parent="obstcles/progress"]
 position = Vector2(-35.8694, -1046.91)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress/Icon6"]
 collision_layer = 3
@@ -131,7 +157,7 @@ shape = SubResource("RectangleShape2D_k0juu")
 [node name="Icon5" type="Sprite2D" parent="obstcles/progress"]
 position = Vector2(-19.8694, 1086.09)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress/Icon5"]
 collision_layer = 3
@@ -141,7 +167,7 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_k0juu")
 
 [node name="progress2" type="Node2D" parent="obstcles"]
-position = Vector2(-2662, -16)
+position = Vector2(-1823, -46)
 
 [node name="door" parent="obstcles/progress2" instance=ExtResource("4_qfnet")]
 position = Vector2(-2.86963, 0.0891113)
@@ -150,7 +176,7 @@ scale = Vector2(5.90339, 6.81554)
 [node name="Icon6" type="Sprite2D" parent="obstcles/progress2"]
 position = Vector2(-35.8694, -1046.91)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress2/Icon6"]
 collision_layer = 3
@@ -162,7 +188,7 @@ shape = SubResource("RectangleShape2D_k0juu")
 [node name="Icon5" type="Sprite2D" parent="obstcles/progress2"]
 position = Vector2(-19.8694, 1086.09)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress2/Icon5"]
 collision_layer = 3
@@ -181,7 +207,7 @@ scale = Vector2(5.90339, 6.81554)
 [node name="Icon6" type="Sprite2D" parent="obstcles/progress3"]
 position = Vector2(-35.8694, -1046.91)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress3/Icon6"]
 collision_layer = 3
@@ -193,7 +219,7 @@ shape = SubResource("RectangleShape2D_k0juu")
 [node name="Icon5" type="Sprite2D" parent="obstcles/progress3"]
 position = Vector2(-19.8694, 1086.09)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress3/Icon5"]
 collision_layer = 3
@@ -212,7 +238,7 @@ scale = Vector2(5.90339, 6.81554)
 [node name="Icon6" type="Sprite2D" parent="obstcles/progress5"]
 position = Vector2(-35.8694, -1046.91)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress5/Icon6"]
 collision_layer = 3
@@ -224,7 +250,7 @@ shape = SubResource("RectangleShape2D_k0juu")
 [node name="Icon5" type="Sprite2D" parent="obstcles/progress5"]
 position = Vector2(-19.8694, 1086.09)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress5/Icon5"]
 collision_layer = 3
@@ -243,7 +269,7 @@ scale = Vector2(5.90339, 6.81554)
 [node name="Icon6" type="Sprite2D" parent="obstcles/progress6"]
 position = Vector2(-35.8694, -1046.91)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress6/Icon6"]
 collision_layer = 3
@@ -255,7 +281,7 @@ shape = SubResource("RectangleShape2D_k0juu")
 [node name="Icon5" type="Sprite2D" parent="obstcles/progress6"]
 position = Vector2(-19.8694, 1086.09)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress6/Icon5"]
 collision_layer = 3
@@ -265,7 +291,7 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_k0juu")
 
 [node name="progress7" type="Node2D" parent="obstcles"]
-position = Vector2(12308, 538)
+position = Vector2(13035, 558)
 
 [node name="door" parent="obstcles/progress7" instance=ExtResource("4_qfnet")]
 position = Vector2(-2.86963, 0.0891113)
@@ -274,7 +300,7 @@ scale = Vector2(5.90339, 6.81554)
 [node name="Icon6" type="Sprite2D" parent="obstcles/progress7"]
 position = Vector2(-35.8694, -1046.91)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress7/Icon6"]
 collision_layer = 3
@@ -286,7 +312,7 @@ shape = SubResource("RectangleShape2D_k0juu")
 [node name="Icon5" type="Sprite2D" parent="obstcles/progress7"]
 position = Vector2(-19.8694, 1086.09)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress7/Icon5"]
 collision_layer = 3
@@ -305,7 +331,7 @@ scale = Vector2(5.90339, 6.81554)
 [node name="Icon6" type="Sprite2D" parent="obstcles/progress8"]
 position = Vector2(-35.8694, -1046.91)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress8/Icon6"]
 collision_layer = 3
@@ -317,7 +343,7 @@ shape = SubResource("RectangleShape2D_k0juu")
 [node name="Icon5" type="Sprite2D" parent="obstcles/progress8"]
 position = Vector2(-19.8694, 1086.09)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress8/Icon5"]
 collision_layer = 3
@@ -326,18 +352,55 @@ collision_mask = 3
 [node name="shape" type="CollisionShape2D" parent="obstcles/progress8/Icon5/bottom"]
 shape = SubResource("RectangleShape2D_k0juu")
 
+[node name="progress9" type="Node2D" parent="obstcles"]
+position = Vector2(20791, -112)
+
+[node name="door" parent="obstcles/progress9" instance=ExtResource("4_qfnet")]
+position = Vector2(-2.86963, 0.0891113)
+scale = Vector2(5.90339, 6.81554)
+
+[node name="stop" parent="obstcles/progress9/door" index="2"]
+position = Vector2(65.7027, -391.765)
+
+[node name="Icon6" type="Sprite2D" parent="obstcles/progress9"]
+position = Vector2(-35.8694, -1046.91)
+scale = Vector2(11.4083, 11.5639)
+texture = ExtResource("5_q5onr")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/progress9/Icon6"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/progress9/Icon6/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="Icon5" type="Sprite2D" parent="obstcles/progress9"]
+position = Vector2(-19.8694, 1086.09)
+scale = Vector2(11.4083, 11.5639)
+texture = ExtResource("5_q5onr")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/progress9/Icon5"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/progress9/Icon5/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
 [node name="progress4" type="Node2D" parent="obstcles"]
-position = Vector2(21050, -98)
+position = Vector2(22162, -98)
 rotation = 3.10336
 
 [node name="door" parent="obstcles/progress4" instance=ExtResource("4_qfnet")]
 position = Vector2(-2.86963, 0.0891113)
 scale = Vector2(5.90339, 6.81554)
 
+[node name="stop" parent="obstcles/progress4/door" index="2"]
+position = Vector2(201.397, 6.93719)
+
 [node name="Icon6" type="Sprite2D" parent="obstcles/progress4"]
 position = Vector2(-35.8694, -1046.91)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress4/Icon6"]
 collision_layer = 3
@@ -349,7 +412,7 @@ shape = SubResource("RectangleShape2D_k0juu")
 [node name="Icon5" type="Sprite2D" parent="obstcles/progress4"]
 position = Vector2(-19.8694, 1086.09)
 scale = Vector2(11.4083, 11.5639)
-texture = ExtResource("2_k0juu")
+texture = ExtResource("5_q5onr")
 
 [node name="bottom" type="StaticBody2D" parent="obstcles/progress4/Icon5"]
 collision_layer = 3
@@ -359,7 +422,7 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_k0juu")
 
 [node name="Zickuza" parent="." node_paths=PackedStringArray("health", "wlabel", "comment", "UIweap", "UIammo") instance=ExtResource("1_rwgxs")]
-position = Vector2(30, 123)
+position = Vector2(-133, 82)
 health = NodePath("../CanvasLayer/UI/lt/HBoxContainer/VBoxContainer/healthbar")
 wlabel = NodePath("../CanvasLayer/UI/rb/VBoxContainer/weap")
 comment = NodePath("../CanvasLayer/UI/lt/HBoxContainer/MarginContainer/RichTextLabel")
@@ -384,6 +447,7 @@ script = ExtResource("6_4mrxx")
 [node name="spawn_enemies2" parent="triggers" instance=ExtResource("6_i7141")]
 position = Vector2(1889, 65)
 monitoring = true
+unlockweapons = 13
 
 [node name="spawn_enemies" parent="triggers" instance=ExtResource("6_i7141")]
 position = Vector2(4581, 111)
@@ -391,9 +455,10 @@ monitoring = true
 rangen = 500.0
 num = 3
 stage = 2
+unlockweapons = 25
 
 [node name="coll" parent="triggers/spawn_enemies" index="0"]
-position = Vector2(-529, 0)
+position = Vector2(-518.874, 0)
 
 [node name="spawn_enemies3" parent="triggers" instance=ExtResource("6_i7141")]
 position = Vector2(8097, 338)
@@ -402,6 +467,7 @@ rangen = 500.0
 num = 3
 stage = 2
 size = 2.0
+unlockweapons = 33
 
 [node name="coll" parent="triggers/spawn_enemies3" index="0"]
 position = Vector2(-1294, -244)
@@ -413,19 +479,135 @@ rangen = 500.0
 num = 3
 stage = 3
 size = 1.2
+unlockweapons = 33
 
 [node name="coll" parent="triggers/spawn_enemies4" index="0"]
 position = Vector2(-1091, 456)
+
+[node name="spawn_enemies5" parent="triggers" instance=ExtResource("6_i7141")]
+position = Vector2(11624, 297)
+monitoring = true
+stage = 6
+size = 1.5
+unlockweapons = 37
+
+[node name="coll" parent="triggers/spawn_enemies5" index="0"]
+position = Vector2(-1077, -142)
+
+[node name="spawn_enemies6" parent="triggers" instance=ExtResource("6_i7141")]
+position = Vector2(14571, -389)
+monitoring = true
+rangen = 500.0
+num = 3
+stage = 6
+size = 1.5
+unlockweapons = 37
+
+[node name="coll" parent="triggers/spawn_enemies6" index="0"]
+position = Vector2(-566, 948)
+
+[node name="spawn_enemies7" parent="triggers" instance=ExtResource("6_i7141")]
+position = Vector2(19423, -8)
+monitoring = true
+rangen = 500.0
+num = 3
+stage = 6
+size = 2.0
+unlockweapons = 37
+
+[node name="coll" parent="triggers/spawn_enemies7" index="0"]
+position = Vector2(-1064.78, 82.1613)
+shape = SubResource("RectangleShape2D_o8fc1")
+
+[node name="spawn_enemies8" parent="triggers" instance=ExtResource("6_i7141")]
+position = Vector2(18146, -8)
+monitoring = true
+rangen = 500.0
+num = 3
+stage = 6
+size = 1.5
+unlockweapons = 37
+
+[node name="coll" parent="triggers/spawn_enemies8" index="0"]
+position = Vector2(161.438, 106.823)
+shape = SubResource("RectangleShape2D_xo05s")
+
+[node name="spawn_enemies9" parent="triggers" instance=ExtResource("6_i7141")]
+position = Vector2(17273, -8)
+monitoring = true
+rangen = 500.0
+num = 3
+stage = 6
+size = 0.5
+unlockweapons = 37
+
+[node name="coll" parent="triggers/spawn_enemies9" index="0"]
+position = Vector2(1063.81, 86.1459)
+shape = SubResource("RectangleShape2D_dss4m")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("5_71j4m")]
 
+[node name="Instructions1" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(-762, 844)
+scale = Vector2(0.966146, 1)
+texture = ExtResource("9_e3hyu")
+
+[node name="Instructions2" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(-161, 852)
+scale = Vector2(0.796875, 1)
+texture = ExtResource("10_q5onr")
+
+[node name="Instructions4" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(-785, 80)
+texture = ExtResource("11_jhx03")
+
+[node name="Vampire" type="Sprite2D" parent="."]
+position = Vector2(22442, 84)
+texture = ExtResource("13_o8fc1")
+
+[node name="Finish" type="Sprite2D" parent="."]
+position = Vector2(21923, -114)
+texture = ExtResource("14_xo05s")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 21578.0
+offset_top = 26.0
+offset_right = 22436.0
+offset_bottom = 158.0
+theme_override_font_sizes/font_size = 30
+text = "Last room will always respawn
+when you go to this sign and back"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1678.0
+offset_top = 427.0
+offset_right = 2921.0
+offset_bottom = 469.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "zondbies have random resistences, 
+so switch weapons often 
+to find their weaknesses!"
+
+[connection signal="body_entered" from="cutscenestarter" to="." method="_on_cutscenestarter_body_entered"]
 [connection signal="retry" from="Zickuza" to="." method="_on_zickuza_retry"]
 [connection signal="lines_edited_from" from="CanvasLayer/UI/TextEdit" to="." method="_on_text_edit_lines_edited_from"]
 [connection signal="pressed" from="CanvasLayer/UI/Button" to="." method="_on_button_pressed"]
 
+[editable path="obstcles/progress9/door"]
+[editable path="obstcles/progress4/door"]
 [editable path="triggers/spawn_enemies"]
 [editable path="triggers/spawn_enemies3"]
 [editable path="triggers/spawn_enemies4"]
+[editable path="triggers/spawn_enemies5"]
+[editable path="triggers/spawn_enemies6"]
+[editable path="triggers/spawn_enemies7"]
+[editable path="triggers/spawn_enemies8"]
+[editable path="triggers/spawn_enemies9"]
 [editable path="CanvasLayer/UI"]

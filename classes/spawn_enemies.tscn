@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cwm6lanq5fmvr" path="res://classes/spawn_enemies.gd" id="1_tk20p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71j4m"]
+size = Vector2(14.9785, 19.5897)
 
 [node name="spawn_enemies" type="Area2D"]
 monitoring = false

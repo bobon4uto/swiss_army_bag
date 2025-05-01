@@ -5,6 +5,7 @@ class_name spawner
 @export var num : int = 1
 @export var stage : int = 1
 @export var size = 1.0
+@export var unlockweapons : int = 1
 signal pls_spawn(body: Node2D, me:spawner)
 
 func _on_body_entered(body: Node2D) -> void:

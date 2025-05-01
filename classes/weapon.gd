@@ -40,7 +40,10 @@ enum dam_type {
 	MENT
 }
 
-
+const NOTWEAPONS = 13
+const OKWEAPONS = 25
+const EPICWEAPONS = 33
+const LEGENDARYWEAPONS = 37
 const possible_weapons = ["hand",
 "ruler","protractor","spray","pokestick","computer mouse","stem","torch","garlic","synth","slingshot","guitar",
 "accordion","door",

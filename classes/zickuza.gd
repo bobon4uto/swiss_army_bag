@@ -27,7 +27,7 @@ var attacking = false
 var shooting = false
 var facing_dir = Vector2.RIGHT
 var bored = false
-var available_weapons = 4
+var available_weapons = 13
 var rclickmovement = Vector2.ZERO
 var lastlook = Vector2.ONE
 var shot_landed = false
@@ -35,23 +35,62 @@ var retrying:bool=false
 const MAX_HELTH = 100
 var bulleting = false
 var booming = false
-
+var cutscene = false
 
 const comm = {
-	#"name":"commentary"
-	"ruler":"Let's meusure the damage.",
-	"spray":"its not holy water, so it's useless.",
-	"garlic":"Yummy!",
-	"computer mouse":"A relic of the past.",
-	
 	
 	"hand":"I'm not as commited as my teacher - George, but I can punch some faces.",
-	"gun":"When mana runs out, I use bullets.",
-	"sword":"Honestly, I dont get why they're so popular...",
+"ruler":"Let's meusure the damage.",
+"protractor":"I remember playing with that thing at school. never used it to measure angles though.",
+"spray":"It's not holy water, so it's useless.",
+"pokestick":"What am I supposed to poke them to death?",
+"computer mouse":"A relic of the past.",
+"stem":"Surprisingly good as a weapon.",
+"torch":"Isn't it weird that torch damage counts as elemental magic? Like, there is nothing magical about a tourch. Eh, go figure.",
+"garlic":"Yummy!",
+"synth":"I'm very bad at music.",
+"slingshot":"pew-pew.",
+"guitar":"This guitar is si sharp I can cut down a tree with it!",
+"accordion":"I'm not a pro at embedding musical instruments with magic.",
+"door":"Not an arch, btw.",
+
+"gun":"When mana runs out, I use bullets.",
+"sword":"Honestly, I dont get why they're so popular...",
+"mace":"Could be bigger.",
+"bow":"Underrated weapon.",
+"bo wand":"Isn't it just a long stck?",
+"water scroll":"All water mages are quities. well, I'm judjing by my friends.",
+"fire scroll":"I know one true fire mage. Its the only person I'm scared of.",
+"wind scroll":"Wind mages are chill. But too hecking lazy.",
+"earth scroll":"Do Earth mages even exist?",
+"phone":"long time ago the biggest tech companies build THE TOURMENT NEXUS to unite all social medias. That was the catalyst for a demon invasion in 21st centry. But humanity won. and now THE TOURMENT NEXUS is installed on all mobile devices. do you want to sign up to THE TOURMENT NEXUS?",
+"pike":"\"Give a peasant a pike, and he will defeat any army\" - some wise guy said some time ago.",
+"brass knucles":"They're not actually brass.",
+
+"chainsaw":"I dont have gas to power it...",
+"plazma sword":"I thought they only come in red colors.",
+"witch hunter":"Witches dont exist. Well, not as a species that is. so the name doesnt really make sense. but its still a great weapon, especially against vampires.",
+"white nights":"OMG IS IT IS IT REALLY IT???? I WANT TO KEEP IT!!! Do you know what that is? Its a special crafted weapon by our equip team. I never have acces to such stuff, I'm just a healer after all, I get catfish swords and other nonsence.",
+"fire whip":"I dont like where this is going.",
+"keg":"Hope I wont blow up myself/",
+"great greatsword":"Now THAT'S a sword.",
+"duck trigger":"IT'S TIME TO PULL MY DUCK TRIGGER!",
+
+"ancient scroll":"I can't read it.",
+"merks":"It's the boots the old man gave me after I helped him. I directed them to the company because theyre a bit too big for me.",
+"null dereference":"What could possibly go wrong?",
+"black and white silver":"PEAK needs ping-ping"
+	#"name":"commentary"
+
 	
-	"brass knucles":"They're not actually brass.",
 	
-	"duck trigger":"IT'S TIME TO PULL MY DUCK TRIGGER!",
+	
+	
+	
+	
+	
+	
+	
 }
 
 
@@ -62,17 +101,19 @@ func _ready():
 	anim.set("parameters/TimeScale/scale",weap.animation_speed)
 	health.max_value = MAX_HELTH
 	health.value = MAX_HELTH
-	available_weapons = weapon.possible_weapons.size()-1
+	#available_weapons = weapon.NOTWEAPONS
 
 func _physics_process(_delta: float) -> void:
-	velocity = handle_input() * SPEED
+	if !cutscene:
+		velocity = handle_input() * SPEED
 	
 	#anim.set("parameters/AnimationNodeStateMachine/swingspace/blend_position",facing_dir)
-	anim.set("parameters/AnimationNodeStateMachine/idlespace/blend_position",facing_dir.x)
+		anim.set("parameters/AnimationNodeStateMachine/idlespace/blend_position",facing_dir.x)
 	
-	if duck_timer.get_time_left()>0:
-		UIammo.text = "time left = "+"%.2f" % duck_timer.get_time_left()
-
+		if duck_timer.get_time_left()>0:
+			UIammo.text = "time left = "+"%.2f" % duck_timer.get_time_left()
+	else:
+		velocity=Vector2.ZERO
 	
 	move_and_slide()
 
@@ -244,6 +285,7 @@ func _on_shoot_end():
 	shot_landed=false
 
 func _on_timer_timeout() -> void:
+
 	health.value+=0.5
 	health.value=clamp(health.value,0,MAX_HELTH)
 	if retrying:
@@ -256,7 +298,7 @@ func on_bullet_hit(body):
 
 func call_swing():
 	if weap.special:
-		if weap.wname.contains("garlic") or weap.wname.contains("keg"):
+		if weap.wname.contains("garlic") or weap.wname.contains("keg") or weap.wname.contains("null dereference"):
 			attacking=false
 	else:
 		swingaudio.play()
@@ -343,5 +385,7 @@ func pull_my_duck_trigger():
 	duck_timer.start(15.0)
 
 func _on_duck_timer_timeout() -> void:
+	if cutscene:
+		return
 	duck_mode = false
 	comment.text = "It was fun while it lasted."
