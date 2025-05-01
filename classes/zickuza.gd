@@ -51,7 +51,7 @@ const comm = {
 	
 	"brass knucles":"They're not actually brass.",
 	
-	"duck trigger":"IT'S TIME TO PULL MY DUCK TRIGGER!"
+	"duck trigger":"IT'S TIME TO PULL MY DUCK TRIGGER!",
 }
 
 
