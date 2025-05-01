@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxgy67qobtvlp"]
+[gd_scene load_steps=9 format=3 uid="uid://cxgy67qobtvlp"]
 
 [ext_resource type="Script" uid="uid://d00yfv0bvuj4r" path="res://scenes/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dw46v0cfvd7y8" path="res://classes/zickuza.tscn" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://c068tgmd843c1" path="res://icon.svg" id="2_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://cshm5h3o0ypj5" path="res://assets/icons/THETOURMENTNEXUS.png" id="2_k0juu"]
+[ext_resource type="PackedScene" uid="uid://chpkkugr3udhh" path="res://classes/door.tscn" id="4_qfnet"]
 [ext_resource type="PackedScene" uid="uid://v64yll6nyrty" path="res://classes/ui.tscn" id="5_71j4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0juu"]
@@ -16,38 +17,45 @@ script = ExtResource("1_k0juu")
 
 [node name="grass" type="Polygon2D" parent="."]
 z_index = -10
+position = Vector2(2831, 0)
 color = Color(0.4635, 0.6, 0.054, 1)
 polygon = PackedVector2Array(-14980, 7245, 128, 7444, -5, -5544, -15378, -5213)
+metadata/_edit_lock_ = true
 
 [node name="grass2" type="Polygon2D" parent="."]
 z_index = -10
-position = Vector2(15108, 66)
+position = Vector2(17939, 66)
 color = Color(0.363075, 0.47, 0.0423, 1)
 polygon = PackedVector2Array(-14980, 7245, -11252, 7308, -11102, -5388, -15378, -5213)
+metadata/_edit_lock_ = true
 
 [node name="grass3" type="Polygon2D" parent="."]
 z_index = -10
-position = Vector2(18544, -182)
+position = Vector2(21375, -182)
 color = Color(0.283799, 0.370313, 0.0268749, 1)
 polygon = PackedVector2Array(-14239, 6959, -11252, 7308, -11102, -5388, -15378, -5213)
+metadata/_edit_lock_ = true
 
 [node name="grass4" type="Polygon2D" parent="."]
 z_index = -10
-position = Vector2(22178, -182)
+position = Vector2(25009, -182)
 color = Color(0.229098, 0.301591, 0.0180089, 1)
 polygon = PackedVector2Array(-16579, 6759, -11252, 7308, -11102, -5388, -14389, -5140)
+metadata/_edit_lock_ = true
 
 [node name="grass5" type="Polygon2D" parent="."]
 z_index = -10
-position = Vector2(26360, -82)
+position = Vector2(29191, -82)
 color = Color(0.17538, 0.234136, 0.011057, 1)
 polygon = PackedVector2Array(-15882, 6759, -11252, 7308, -11102, -5388, -15086, -5339)
+metadata/_edit_lock_ = true
 
 [node name="grass6" type="Polygon2D" parent="."]
 z_index = -10
-position = Vector2(30642, -182)
+position = Vector2(33473, -182)
 color = Color(0.128358, 0.175107, 0.00645238, 1)
 polygon = PackedVector2Array(-15882, 6759, -11252, 7308, -11102, -5388, -15783, -5438)
+metadata/_edit_lock_ = true
 
 [node name="obstcles" type="Node2D" parent="."]
 z_index = -5
@@ -88,30 +96,6 @@ collision_mask = 3
 [node name="shape" type="CollisionShape2D" parent="obstcles/Icon3/bottom"]
 shape = SubResource("RectangleShape2D_k0juu")
 
-[node name="enemywall" type="Sprite2D" parent="obstcles"]
-position = Vector2(812.012, -68)
-scale = Vector2(3.85109, -29.3367)
-texture = ExtResource("2_k0juu")
-
-[node name="bottom" type="StaticBody2D" parent="obstcles/enemywall"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="shape" type="CollisionShape2D" parent="obstcles/enemywall/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
-[node name="enemywall2" type="Sprite2D" parent="obstcles"]
-position = Vector2(-1077, -11)
-scale = Vector2(3.85109, -29.3367)
-texture = ExtResource("2_k0juu")
-
-[node name="bottom" type="StaticBody2D" parent="obstcles/enemywall2"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="shape" type="CollisionShape2D" parent="obstcles/enemywall2/bottom"]
-shape = SubResource("RectangleShape2D_k0juu")
-
 [node name="Icon4" type="Sprite2D" parent="obstcles"]
 position = Vector2(57108, -37)
 scale = Vector2(3.85109, -29.3367)
@@ -122,6 +106,132 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="shape" type="CollisionShape2D" parent="obstcles/Icon4/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="progress" type="Node2D" parent="obstcles"]
+position = Vector2(895, 73)
+metadata/_edit_group_ = true
+
+[node name="door" parent="obstcles/progress" instance=ExtResource("4_qfnet")]
+position = Vector2(-2.86963, 0.0891113)
+scale = Vector2(5.90339, 6.81554)
+
+[node name="Icon6" type="Sprite2D" parent="obstcles/progress"]
+position = Vector2(-35.8694, -1046.91)
+scale = Vector2(11.4083, 11.5639)
+texture = ExtResource("2_k0juu")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/progress/Icon6"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/progress/Icon6/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="Icon5" type="Sprite2D" parent="obstcles/progress"]
+position = Vector2(-19.8694, 1086.09)
+scale = Vector2(11.4083, 11.5639)
+texture = ExtResource("2_k0juu")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/progress/Icon5"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/progress/Icon5/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="progress2" type="Node2D" parent="obstcles"]
+position = Vector2(-2662, -16)
+
+[node name="door" parent="obstcles/progress2" instance=ExtResource("4_qfnet")]
+position = Vector2(-2.86963, 0.0891113)
+scale = Vector2(5.90339, 6.81554)
+
+[node name="Icon6" type="Sprite2D" parent="obstcles/progress2"]
+position = Vector2(-35.8694, -1046.91)
+scale = Vector2(11.4083, 11.5639)
+texture = ExtResource("2_k0juu")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/progress2/Icon6"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/progress2/Icon6/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="Icon5" type="Sprite2D" parent="obstcles/progress2"]
+position = Vector2(-19.8694, 1086.09)
+scale = Vector2(11.4083, 11.5639)
+texture = ExtResource("2_k0juu")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/progress2/Icon5"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/progress2/Icon5/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="progress3" type="Node2D" parent="obstcles"]
+position = Vector2(5926, -16)
+
+[node name="door" parent="obstcles/progress3" instance=ExtResource("4_qfnet")]
+position = Vector2(-2.86963, 0.0891113)
+scale = Vector2(5.90339, 6.81554)
+
+[node name="Icon6" type="Sprite2D" parent="obstcles/progress3"]
+position = Vector2(-35.8694, -1046.91)
+scale = Vector2(11.4083, 11.5639)
+texture = ExtResource("2_k0juu")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/progress3/Icon6"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/progress3/Icon6/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="Icon5" type="Sprite2D" parent="obstcles/progress3"]
+position = Vector2(-19.8694, 1086.09)
+scale = Vector2(11.4083, 11.5639)
+texture = ExtResource("2_k0juu")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/progress3/Icon5"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/progress3/Icon5/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="progress4" type="Node2D" parent="obstcles"]
+position = Vector2(21050, -98)
+rotation = 3.10336
+
+[node name="door" parent="obstcles/progress4" instance=ExtResource("4_qfnet")]
+position = Vector2(-2.86963, 0.0891113)
+scale = Vector2(5.90339, 6.81554)
+
+[node name="Icon6" type="Sprite2D" parent="obstcles/progress4"]
+position = Vector2(-35.8694, -1046.91)
+scale = Vector2(11.4083, 11.5639)
+texture = ExtResource("2_k0juu")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/progress4/Icon6"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/progress4/Icon6/bottom"]
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="Icon5" type="Sprite2D" parent="obstcles/progress4"]
+position = Vector2(-19.8694, 1086.09)
+scale = Vector2(11.4083, 11.5639)
+texture = ExtResource("2_k0juu")
+
+[node name="bottom" type="StaticBody2D" parent="obstcles/progress4/Icon5"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="shape" type="CollisionShape2D" parent="obstcles/progress4/Icon5/bottom"]
 shape = SubResource("RectangleShape2D_k0juu")
 
 [node name="Zickuza" parent="." node_paths=PackedStringArray("health", "wlabel", "comment", "UIweap", "UIammo") instance=ExtResource("1_rwgxs")]
@@ -147,11 +257,11 @@ drag_vertical_enabled = true
 [node name="triggers" type="Node2D" parent="."]
 
 [node name="spawn_enemies" type="Area2D" parent="triggers"]
-position = Vector2(2136, 7)
+position = Vector2(4052, 13)
 monitoring = false
 
 [node name="coll" type="CollisionShape2D" parent="triggers/spawn_enemies"]
-position = Vector2(-459, -4)
+position = Vector2(-833, -4)
 scale = Vector2(29.4505, 34.2708)
 shape = SubResource("RectangleShape2D_71j4m")
 

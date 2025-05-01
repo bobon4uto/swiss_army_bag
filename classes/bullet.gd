@@ -4,11 +4,12 @@ class_name bullet
 var velocity :Vector2 = Vector2.ONE
 var speed = 10.0
 var hitnum:int=1
-var wname = "gun"
+var wname = "default"
 @onready var sprite : AnimatedSprite2D = $sprite
 
 func _ready() -> void:
 	sprite.play(wname)
+	look_at(position+velocity)
 
 func _process(delta: float) -> void:
 	position = position.move_toward(position+velocity,delta*speed)

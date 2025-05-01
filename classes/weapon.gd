@@ -41,7 +41,8 @@ enum dam_type {
 }
 
 
-const possible_weapons = ["hand","gun", "sword", "mace"]
+const possible_weapons = ["hand","gun", "sword", "mace",
+"black and white silver"]
 
 const weap_dict = {
 	#"name":[damage,knockback, ammo, type, hitsize,offset,shoot,swing,special]
@@ -49,7 +50,9 @@ const weap_dict = {
 	
 	"gun":[10,1,17,[dam_type.PIERCE],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
 	"sword":[10,10,-1,[dam_type.SLASH],Vector2(60,180),Vector2(0,-60),false,true,false,0.5],
-	"mace":[10,100,-1,[dam_type.BLUNT],Vector2(60,180),Vector2(0,-60),false,true,false,0.2]
+	"mace":[10,100,-1,[dam_type.BLUNT],Vector2(60,180),Vector2(0,-60),false,true,false,0.2],
+	
+	"black and white silver":[50,1,30,[dam_type.PIERCE, dam_type.MENT],Vector2(60,60),Vector2(0,-30),true,false,false,2.0],
 }
 
 var shoot = false
@@ -63,7 +66,7 @@ var shapet :RectangleShape2D
 func _ready():
 	body_entered.connect(_on_body_entered)
 	shapet = RectangleShape2D.new()
-	set_weapon(1)
+	set_weapon(0)
 	shape.shape= shapet
 
 func set_weapon(ID):

@@ -82,7 +82,6 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="lt/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "ammo: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -117,7 +116,7 @@ grow_vertical = 0
 
 [node name="weap" type="Label" parent="rb/VBoxContainer"]
 layout_mode = 2
-text = "weapon"
+text = "hand"
 
 [node name="weapanel" type="PanelContainer" parent="rb/VBoxContainer"]
 layout_mode = 2
@@ -135,5 +134,5 @@ stretch_mode = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rb/VBoxContainer/weapanel/AspectRatioContainer"]
 sprite_frames = ExtResource("4_hyijr")
-animation = &"sword"
+animation = &"hand"
 centered = false

@@ -17,12 +17,15 @@ const SPEED = 500
 @onready var timer = $Timer
 @onready var spl : AnimationPlayer= $splash
 @onready var splspr = $weaponsplash
+@onready var shootaudio : AudioStreamPlayer = $shootaudio
+@onready var swingaudio : AudioStreamPlayer = $swingAudio
+@onready var ding : AudioStreamPlayer =$ding
 var checkpoint = Vector2(0,0)
 var attacking = false
 var shooting = false
 var facing_dir = Vector2.RIGHT
 var bored = false
-var available_weapons = 3
+var available_weapons = 4
 var rclickmovement = Vector2.ZERO
 var lastlook = Vector2.ONE
 var shot_landed = false
@@ -176,7 +179,21 @@ func handle_hit(damage):
 func restart():
 	position=checkpoint
 	health.value=MAX_HELTH
-	
+	set_weapon_in_hand(0)
+	var variant = randi()%3
+	match (variant):
+		0:
+			comment.text = "Oops, I died, silly me! What? Why am I alive again? Nanoma- I,m kidding, company secret."
+		1:
+			comment.text = "I died. Did that hurt? Of course it did. Am I used to it? kind of."
+		2:
+			comment.text = "I died. Thank god silver sunrise pays my medical bills."
+		3:
+			comment.text = "I died. I feel like I'm in a hard videogame..."
+		4:
+			comment.text = "I died. Don't worry, I won't become undead."
+
+
 	retrying = true
 
 func _on_bullet_body_entered(body: Node2D) -> void:
@@ -204,6 +221,9 @@ func on_bullet_hit(body):
 	if body is enemy:
 		body.handle_hit(weap.damage,weap.knockback,weap.dam_tip)
 
+func call_swing():
+	swingaudio.play()
+
 func shoot_bullet():
 	if (weap.ammo > 0):
 		weap.ammo-=1
@@ -215,6 +235,15 @@ func shoot_bullet():
 		set_weapon_in_hand(0)
 		return
 	var new_bullet = preload("res://classes/bullet.tscn").instantiate()
+	
+	if weap.special:
+		if weap.name.contains("black and white silver"):
+			ding.play()
+		else:
+			shootaudio.play()
+	else:
+		shootaudio.play()
+	
 	if rclickmovement != Vector2.ZERO:
 		new_bullet.velocity=rclickmovement*100000
 	else: 

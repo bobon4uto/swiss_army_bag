@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://chpkkugr3udhh"]
+
+[ext_resource type="Texture2D" uid="uid://cshm5h3o0ypj5" path="res://assets/icons/THETOURMENTNEXUS.png" id="1_1ucvs"]
+[ext_resource type="Script" uid="uid://dk5i5jbkkc2ii" path="res://classes/door.gd" id="1_vxhyc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxhyc"]
+size = Vector2(20, 100)
+
+[node name="door" type="Node2D"]
+script = ExtResource("1_vxhyc")
+
+[node name="dorr" type="StaticBody2D" parent="."]
+
+[node name="dr" type="CollisionShape2D" parent="dorr"]
+shape = SubResource("RectangleShape2D_vxhyc")
+
+[node name="drrrr" type="Sprite2D" parent="dorr"]
+texture = ExtResource("1_1ucvs")
+
+[node name="pass" type="Area2D" parent="."]
+position = Vector2(-80, 0)
+
+[node name="dr" type="CollisionShape2D" parent="pass"]
+shape = SubResource("RectangleShape2D_vxhyc")
+
+[node name="stop" type="Area2D" parent="."]
+position = Vector2(80, 0)
+
+[node name="dr" type="CollisionShape2D" parent="stop"]
+shape = SubResource("RectangleShape2D_vxhyc")
+
+[connection signal="body_entered" from="pass" to="." method="_on_pass_body_entered"]
+[connection signal="body_entered" from="stop" to="." method="_on_stop_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dw46v0cfvd7y8"]
+[gd_scene load_steps=31 format=3 uid="uid://dw46v0cfvd7y8"]
 
 [ext_resource type="Script" uid="uid://wiklv8lfx07u" path="res://classes/zickuza.gd" id="1_kdb3x"]
 [ext_resource type="Texture2D" uid="uid://d4gshv443ayrc" path="res://assets/Zickuza/zickuza-the_yellow_duckl.png" id="2_bbnjn"]
@@ -8,6 +8,8 @@
 [ext_resource type="AnimationNodeStateMachine" uid="uid://b23kbhf8s7uao" path="res://classes/animtree.tres" id="3_ypdeb"]
 [ext_resource type="PackedScene" uid="uid://bel6lmf6hcvmu" path="res://classes/weapon.tscn" id="4_ypdeb"]
 [ext_resource type="SpriteFrames" uid="uid://03odwykshfxl" path="res://classes/weapon.tres" id="8_bbnjn"]
+[ext_resource type="AudioStream" uid="uid://doqfduvnprydf" path="res://assets/sounds/laserShoot.wav" id="9_dhlvq"]
+[ext_resource type="AudioStream" uid="uid://cp4nirjvujadr" path="res://assets/sounds/swingr.wav" id="10_gp5a1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fnict"]
 radius = 43.0
@@ -254,6 +256,18 @@ tracks/1/keys = {
 "method": &"centre_look_at"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("actual_center/centre/hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(28, -4), Vector2(20, -4), Vector2(28, -4)]
+}
 
 [sub_resource type="Animation" id="Animation_d4lev"]
 resource_name = "swing"
@@ -439,6 +453,20 @@ tracks/2/keys = {
 "method": &"centre_look_at"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"call_swing"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_x40g7"]
 resource_name = "swingu"
@@ -501,7 +529,6 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7wis1"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x40g7"]
-graph_offset = Vector2(-872.786, 106.437)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_ypdeb")
 nodes/Add2/position = Vector2(-200, 300)
 nodes/AnimationNodeStateMachine/node = ExtResource("3_ypdeb")
@@ -514,6 +541,57 @@ nodes/output/position = Vector2(280, 120)
 node_connections = [&"Add2", 0, &"AnimationNodeStateMachine", &"Add2", 1, &"StateMachine", &"TimeScale", 0, &"Add2", &"output", 0, &"TimeScale"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wy011"]
+
+[sub_resource type="Animation" id="Animation_2eef7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weaponsplash:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weaponsplash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weaponsplash:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weaponsplash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_0a1w3"]
 resource_name = "spl"
@@ -565,57 +643,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [true, true, false, false]
-}
-
-[sub_resource type="Animation" id="Animation_2eef7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("weaponsplash:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("weaponsplash:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("weaponsplash:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("weaponsplash:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_84k2g"]
@@ -680,6 +707,17 @@ animation = &"gun"
 libraries = {
 &"": SubResource("AnimationLibrary_84k2g")
 }
+
+[node name="shootaudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_dhlvq")
+bus = &"effects"
+
+[node name="swingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_gp5a1")
+volume_db = -14.991
+bus = &"effects"
+
+[node name="ding" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="actual_center/centre/hand/bullet" to="." method="_on_bullet_body_entered"]

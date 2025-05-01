@@ -1,12 +1,21 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://03odwykshfxl"]
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://03odwykshfxl"]
 
 [ext_resource type="Texture2D" uid="uid://dvrwlwkdhsigx" path="res://assets/weapons/gun/gun.png" id="1_55aur"]
+[ext_resource type="Texture2D" uid="uid://b8lga16uk4fae" path="res://assets/weapons/DINGDINGPISTOLS.png" id="1_73gro"]
 [ext_resource type="Texture2D" uid="uid://duy0ccq1gqpgb" path="res://assets/weapons/hand.png" id="2_73gro"]
 [ext_resource type="Texture2D" uid="uid://dfo30yp6lphj0" path="res://assets/weapons/mace/mace.png" id="2_cvjb1"]
 [ext_resource type="Texture2D" uid="uid://cvww11i47wohe" path="res://assets/weapons/sword/sword.png" id="3_73gro"]
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_73gro")
+}],
+"loop": true,
+"name": &"black and white silver",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_55aur")

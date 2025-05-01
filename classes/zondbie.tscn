@@ -1,6 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://bgapcgm8jf2gu"]
+[gd_scene load_steps=49 format=3 uid="uid://bgapcgm8jf2gu"]
 
 [ext_resource type="Script" uid="uid://c07d53gimqwbc" path="res://classes/zondbie.gd" id="1_2141s"]
+[ext_resource type="Texture2D" uid="uid://disdiqdu8rprh" path="res://assets/enemies/attackCircle.png" id="2_06fdj"]
 [ext_resource type="Texture2D" uid="uid://2gusak6rt5nr" path="res://assets/enemies/daedenemy.png" id="2_88cr1"]
 [ext_resource type="Texture2D" uid="uid://dopns2dk2tw0k" path="res://assets/enemies/0slash/bd.png" id="2_mo8gx"]
 [ext_resource type="Texture2D" uid="uid://c068tgmd843c1" path="res://icon.svg" id="2_u7ry8"]
@@ -31,6 +32,13 @@
 [ext_resource type="Texture2D" uid="uid://dpmaq28fo1srf" path="res://assets/enemies/4heavy/rh.png" id="29_ihfxv"]
 [ext_resource type="Texture2D" uid="uid://bro0qcoa2t3xk" path="res://assets/enemies/5elem/rh.png" id="30_3wbmb"]
 [ext_resource type="Texture2D" uid="uid://sn23ojdq6c38" path="res://assets/enemies/6ment/rh.png" id="31_ych8r"]
+[ext_resource type="AudioStream" uid="uid://1sn80wrbo235" path="res://assets/sounds/damage/slash.wav" id="32_u4kxy"]
+[ext_resource type="AudioStream" uid="uid://css7km0w6p1b7" path="res://assets/sounds/damage/blunt.wav" id="33_2qtsd"]
+[ext_resource type="AudioStream" uid="uid://j3hpf88e713y" path="res://assets/sounds/damage/elem.wav" id="33_xgamy"]
+[ext_resource type="AudioStream" uid="uid://wmkb4nywk8fp" path="res://assets/sounds/damage/pierce.wav" id="34_06fdj"]
+[ext_resource type="AudioStream" uid="uid://cf8q8mdism4d1" path="res://assets/sounds/damage/light.wav" id="35_8qhal"]
+[ext_resource type="AudioStream" uid="uid://clt0dba6ewfqo" path="res://assets/sounds/damage/heavy.wav" id="36_owm54"]
+[ext_resource type="AudioStream" uid="uid://dmuj0v1e5qc57" path="res://assets/sounds/damage/ment.wav" id="38_pyn4r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovfii"]
 animations = [{
@@ -341,8 +349,42 @@ radius = 196.825
 [sub_resource type="CircleShape2D" id="CircleShape2D_yih0o"]
 radius = 602.336
 
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_u4kxy"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_re6ey"]
+clip_count = 8
+clip_0/name = &"0"
+clip_0/stream = ExtResource("32_u4kxy")
+clip_0/auto_advance = 0
+clip_1/name = &"1"
+clip_1/stream = ExtResource("33_2qtsd")
+clip_1/auto_advance = 0
+clip_2/name = &"2"
+clip_2/stream = ExtResource("34_06fdj")
+clip_2/auto_advance = 0
+clip_3/name = &"3"
+clip_3/stream = ExtResource("35_8qhal")
+clip_3/auto_advance = 0
+clip_4/name = &"4"
+clip_4/stream = ExtResource("36_owm54")
+clip_4/auto_advance = 0
+clip_5/name = &"5"
+clip_5/stream = ExtResource("33_xgamy")
+clip_5/auto_advance = 0
+clip_6/name = &"6"
+clip_6/stream = ExtResource("38_pyn4r")
+clip_6/auto_advance = 0
+clip_7/name = &"none"
+clip_7/stream = SubResource("AudioStreamGenerator_u4kxy")
+clip_7/auto_advance = 0
+
 [node name="zondbie" type="RigidBody2D"]
 script = ExtResource("1_2141s")
+
+[node name="attack" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.99802, 1.99802)
+texture = ExtResource("2_06fdj")
 
 [node name="body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ovfii")
@@ -383,6 +425,11 @@ offset_bottom = 107.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamInteractive_re6ey")
+autoplay = true
+bus = &"effects"
 
 [connection signal="body_entered" from="hurtbox/hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hurtbox/hitbox" to="." method="_on_hitbox_body_exited"]

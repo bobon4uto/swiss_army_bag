@@ -1,16 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://c66so47opcdtr"]
+[gd_scene load_steps=7 format=3 uid="uid://c66so47opcdtr"]
 
 [ext_resource type="Script" uid="uid://c5vg3cy6i548f" path="res://classes/bullet.gd" id="1_ft5th"]
 [ext_resource type="Texture2D" uid="uid://dnhtbvyxfhwgd" path="res://assets/icons/silverlink.png" id="2_6if88"]
+[ext_resource type="Texture2D" uid="uid://7731dbe0p3wt" path="res://assets/bullets/DINGBULLET.png" id="2_bv00w"]
+[ext_resource type="Texture2D" uid="uid://gfpfwpjor4uc" path="res://assets/bullets/gunbullet.png" id="3_6if88"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bv00w"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bv00w")
+}],
+"loop": true,
+"name": &"black and white silver",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_6if88")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6if88")
+}],
+"loop": true,
+"name": &"gun",
 "speed": 5.0
 }]
 
@@ -22,6 +40,7 @@ script = ExtResource("1_ft5th")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bv00w")
+animation = &"black and white silver"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h5rhw")
