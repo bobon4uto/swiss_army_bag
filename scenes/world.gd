@@ -4,7 +4,7 @@ extends Node2D
 @onready var cam : Camera2D= %cam
 #@onready var sp = $triggers/spawn_enemies
 @onready var ea = $enemies
-@onready var te = $CanvasLayer/UI/TextEdit
+#@onready var te = $CanvasLayer/UI/TextEdit
 @onready var trr =$triggers
 func _ready():
 	for child in trr.get_children():
@@ -45,12 +45,13 @@ func _on_zickuza_retry() -> void:
 
 
 func _on_button_pressed() -> void:
-	
-	zickuza.set_weapon_in_hand(int(te.text)%weapon.possible_weapons.size())
+	pass
+#	zickuza.set_weapon_in_hand(int(te.text)%weapon.possible_weapons.size())
 
 
 func _on_text_edit_lines_edited_from(_from_line: int, _to_line: int) -> void:
-	zickuza.set_weapon_in_hand(int(te.text)%weapon.possible_weapons.size())
+#	zickuza.set_weapon_in_hand(int(te.text)%weapon.possible_weapons.size())
+	pass
 
 
 func _on_spawn_pls(body: Node2D, me:spawner) -> void:

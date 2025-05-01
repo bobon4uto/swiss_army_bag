@@ -1,10 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://v64yll6nyrty"]
+[gd_scene load_steps=18 format=3 uid="uid://v64yll6nyrty"]
 
 [ext_resource type="Texture2D" uid="uid://cjo8n4igp6mce" path="res://assets/icons/settings.png" id="1_c6p4a"]
 [ext_resource type="Script" uid="uid://bujwgimhb3n45" path="res://classes/ui.gd" id="1_qbtsj"]
 [ext_resource type="Texture2D" uid="uid://dk3s1cpp1kqom" path="res://assets/Zickuza/face/talk.png" id="2_hyijr"]
 [ext_resource type="Texture2D" uid="uid://dfo30yp6lphj0" path="res://assets/weapons/mace/mace.png" id="3_hyijr"]
 [ext_resource type="SpriteFrames" uid="uid://03odwykshfxl" path="res://classes/weapon.tres" id="4_hyijr"]
+[ext_resource type="Script" uid="uid://bvx4dxs2krgib" path="res://addons/virtual_joystick/virtual_joystick.gd" id="7_em8hk"]
+[ext_resource type="Texture2D" uid="uid://bm30au8mjfc2f" path="res://addons/virtual_joystick/textures/joystick_base_outline.png" id="8_0e84g"]
+[ext_resource type="Texture2D" uid="uid://dl48jqgm53pip" path="res://assets/icons/bag.png" id="9_0hho8"]
+[ext_resource type="Texture2D" uid="uid://dt13r06u87fib" path="res://addons/virtual_joystick/textures/joystick_tip_arrows.png" id="9_orqtt"]
+[ext_resource type="Texture2D" uid="uid://m3ffyf4js82p" path="res://assets/icons/bag_pressed.png" id="10_uwsu0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5k6w"]
 bg_color = Color(0.69, 0.5842, 0.3726, 0.278431)
@@ -47,6 +52,9 @@ animations = [{
 "name": &"talk",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnwgn"]
+size = Vector2(1000, 1000)
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -152,6 +160,7 @@ animation = &"hand"
 centered = false
 
 [node name="TextEdit" type="TextEdit" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.835
@@ -162,6 +171,7 @@ offset_right = 8.0
 grow_vertical = 0
 
 [node name="Button" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -174,3 +184,117 @@ offset_right = 68.0
 grow_horizontal = 2
 grow_vertical = 0
 icon = ExtResource("1_c6p4a")
+
+[node name="VirtualJoystick" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.6
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("7_em8hk")
+joystick_mode = 1
+visibility_mode = 1
+action_left = "look_left"
+action_right = "look_right"
+action_up = "look_up"
+action_down = "look_down"
+metadata/_custom_type_script = "uid://bvx4dxs2krgib"
+
+[node name="Base" type="TextureRect" parent="VirtualJoystick"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 100)
+mouse_force_pass_scroll_events = false
+texture = ExtResource("8_0e84g")
+stretch_mode = 5
+
+[node name="Tip" type="TextureRect" parent="VirtualJoystick/Base"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("9_orqtt")
+stretch_mode = 5
+
+[node name="VirtualJoystick2" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.4
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("7_em8hk")
+joystick_mode = 1
+visibility_mode = 1
+metadata/_custom_type_script = "uid://bvx4dxs2krgib"
+
+[node name="Base" type="TextureRect" parent="VirtualJoystick2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 100)
+mouse_force_pass_scroll_events = false
+texture = ExtResource("8_0e84g")
+stretch_mode = 5
+
+[node name="Tip" type="TextureRect" parent="VirtualJoystick2/Base"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("9_orqtt")
+stretch_mode = 5
+
+[node name="attack" type="TouchScreenButton" parent="."]
+position = Vector2(1148, 346)
+shape = SubResource("RectangleShape2D_vnwgn")
+action = "attack"
+visibility_mode = 1
+
+[node name="gacha" type="TouchScreenButton" parent="."]
+position = Vector2(493, 511)
+scale = Vector2(0.318376, 0.423841)
+texture_normal = ExtResource("9_0hho8")
+texture_pressed = ExtResource("10_uwsu0")
+shape_visible = false
+action = "gacha"
+visibility_mode = 1
